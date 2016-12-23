@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="daw1_database@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="daw1_database">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="daw2_actividades"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <table id="7" parent="2" name="Perfil"/>
+    <table id="8" parent="2" name="Publicacion"/>
+    <table id="9" parent="2" name="Usuario"/>
+    <table id="10" parent="2" name="Usuario_Perfil"/>
+    <column id="11" parent="7" name="id_perfil">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="12" parent="7" name="nombre_perfil">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="13" parent="7" name="descripcion">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="14" parent="7" name="imagen">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="15" parent="7" name="seguidores">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="16" parent="7" name="num_publicaciones">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="17" parent="7" name="id_perfil_UNIQUE">
+      <ColNames>id_perfil</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="18" parent="7" name="PRIMARY">
+      <ColNames>id_perfil</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="19" parent="7" name="id_perfil_UNIQUE">
+      <ColNames>id_perfil</ColNames>
+      <UnderlyingIndexName>id_perfil_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="20" parent="8" name="id_publicacion">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="8" name="titulo">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="8" name="fecha">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="23" parent="8" name="recurso_media">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="24" parent="8" name="texto">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="25" parent="8" name="id_perfil">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="8" name="fk_Publicacion_Perfil1_idx">
+      <ColNames>id_perfil</ColNames>
+    </index>
+    <index id="27" parent="8" name="id_publicacion_UNIQUE">
+      <ColNames>id_publicacion</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="28" parent="8" name="PRIMARY">
+      <ColNames>id_publicacion
+id_perfil</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="29" parent="8" name="id_publicacion_UNIQUE">
+      <ColNames>id_publicacion</ColNames>
+      <UnderlyingIndexName>id_publicacion_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="30" parent="8" name="fk_Publicacion_Perfil1">
+      <ColNames>id_perfil</ColNames>
+      <RefSchemaName>daw1_database</RefSchemaName>
+      <RefTableName>Perfil</RefTableName>
+      <RefColNames>id_perfil</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="31" parent="9" name="id_usuario">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="9" name="email">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="9" name="contrasena">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="9" name="tipo_usuario">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="9" name="nombre_usuario">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="36" parent="9" name="nombre_completo">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="37" parent="9" name="sexo">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="38" parent="9" name="descripcion">
+      <Position>8</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <index id="39" parent="9" name="id_usuario_UNIQUE">
+      <ColNames>id_usuario</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="40" parent="9" name="PRIMARY">
+      <ColNames>id_usuario</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="41" parent="9" name="id_usuario_UNIQUE">
+      <ColNames>id_usuario</ColNames>
+      <UnderlyingIndexName>id_usuario_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="42" parent="10" name="id_usuario">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="10" name="id_perfil">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="44" parent="10" name="fk_Usuario_has_Perfil_Perfil1_idx">
+      <ColNames>id_perfil</ColNames>
+    </index>
+    <index id="45" parent="10" name="fk_Usuario_has_Perfil_Usuario_idx">
+      <ColNames>id_usuario</ColNames>
+    </index>
+    <key id="46" parent="10" name="PRIMARY">
+      <ColNames>id_usuario
+id_perfil</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="47" parent="10" name="fk_Usuario_has_Perfil_Usuario">
+      <ColNames>id_usuario</ColNames>
+      <RefSchemaName>daw1_database</RefSchemaName>
+      <RefTableName>Usuario</RefTableName>
+      <RefColNames>id_usuario</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="48" parent="10" name="fk_Usuario_has_Perfil_Perfil1">
+      <ColNames>id_perfil</ColNames>
+      <RefSchemaName>daw1_database</RefSchemaName>
+      <RefTableName>Perfil</RefTableName>
+      <RefColNames>id_perfil</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>
