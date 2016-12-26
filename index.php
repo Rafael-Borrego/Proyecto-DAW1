@@ -3,6 +3,7 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/proyecto_daw1/clases/ControlWeb.php";
 
+$titulo_vista = "PORTADA YOUTWINS";
 $control_web = new ControlWeb();
 $usuario_incorrecto = false;
 $registro_incorrecto = false;
@@ -38,12 +39,9 @@ elseif(isset($_POST['submitted_registro']))
 
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <?php include("piezas/metas_head.php"); ?>
 
-    <title>Portada Youtwins</title>
+    <title><?= $titulo_vista?></title>
 
     <!-- Bootstrap CSS-->
     <link href="recursos/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
