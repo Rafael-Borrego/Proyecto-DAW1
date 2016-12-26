@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publicaciones>
+    <publicacion>
+        <id>1</id>
+        <titulo>publicacion1</titulo>
+        <fecha>10/10/2012</fecha>
+        <recurso_media>./imagenes/ernesto/foto1.png</recurso_media>
+        <texto>texto publicacion 1</texto>
+        <perfil>@ernesto</perfil>
+    </publicacion>
+    <publicacion>
+        <id>2</id>
+        <titulo>publicacion2</titulo>
+        <fecha>10/10/2011</fecha>
+        <recurso_media>./imagenes/ernesto2/foto1.png</recurso_media>
+        <texto>texto publicacion 2</texto>
+        <perfil>@ernesto2</perfil>
+    </publicacion>
+</publicaciones>

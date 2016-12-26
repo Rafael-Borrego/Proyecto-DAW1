@@ -1,0 +1,2 @@
+INSERT INTO daw1_database.Usuario (email, contrasena, tipo_usuario, nombre_usuario, nombre_completo, sexo, descripcion) VALUES ('admin_ernesto@email.com', 'pass', 'administrador', 'admin_ernesto', 'admin_ernesto_completo', 'hombre', 'admin_ernesto descripción');
+INSERT INTO daw1_database.Usuario (email, contrasena, tipo_usuario, nombre_usuario, nombre_completo, sexo, descripcion) VALUES ('normal_ernesto@email.com', 'pass', 'normal', 'normal_ernesto', 'normal_ernesto_completo', 'hombre', 'normal_ernesto descripción');

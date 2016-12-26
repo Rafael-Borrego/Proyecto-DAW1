@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>Informe Youtwins</title>
+
+    <!-- Bootstrap CSS-->
+    <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS Personalizados para index y componentes -->
+    <link href="css/informe.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-primary">
+    <!--Container-fluid cabecera-->
+    <div class="container">
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h1 class="text-uppercase">DAWI - Bloque 1 - YOUTWINS</h1>
+          <h2>AUTORES</h2>
+          <ul>
+            <li>Ernesto Boado Moreira.</li>
+            <li>Rafael Borrego Vidal.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>OBJETIVOS</h2>
+          <p>Se pretende desarrollar una aplicación web en la que los usuarios registrados puedan 
+	        configurar un feed de contenidos derivados de cuentas de redes sociales como twitter, instagram
+	        y youtube.</p>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>VISTAS DE LA APLICACIÓN</h2>
+          <ul>
+            <li><strong>Portada</strong>. Página principal de la aplicación con los botones de Login, 
+                Registro y Sobre Nosotros.</li>
+            <li><strong>Perfiles Populares</strong>. Portada de la parte interior de la aplicación para
+                usuarios registrados donde se muestran perfiles de redes sociales populares agrupados en
+                categorías (deportes, música, sociedad, etc.).</li>  
+            <li><strong>Mis Perfiles</strong>. Vista personal del usuario registrado donde se listan los
+                perfiles de redes sociales que sigue.</li>
+            <li><strong>Nuevo Perfil (Explorar)</strong>. Vista desde la que el usuario registrado puede
+                buscar perfiles de redes sociales para seguir.</li>
+            <li><strong>Perfil Particular</strong>. Vista con el feed de publicaciones (de las diferentes redes
+                sociales) para un perfil en particular.</li>
+            <li><strong>Configuración Usuario</strong>. Vista de configuración del usuario.</li>
+            <li><strong>Administrar Usuarios</strong>. Vista de la parte de la aplicación interna del administrador
+                donde se pueden ver los usuarios del sistema en una tabla con paginación.</li>
+            <li><strong>Administrar Perfiles Redes Sociales</strong>. Vista de la parte de la aplicación interna del administrador
+                donde se pueden ver los perfiles de redes sociales del sistema disponibles para la selección por los usuarios
+                registrados en una tabla con paginación.</li>
+            <li><strong>Añadir Perfil</strong>. Vista del administrador para añadir un perfil de la red social que sea al 
+                sistema.</li>
+            <li><strong>Configuración Administrador</strong>. Vista de configuración del administrador</li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>TIPOS DE USUARIO</h2>
+          <ul>
+            <li><strong>Usuario No Registrado</strong>. Sólo tendrá acceso a la portada de la aplicación.</li>
+            <li><strong>Usuario Registrado</strong>. Tendrá acceso a la portada y a la parte de la aplicación de usuarios
+                registrados.</li>
+            <li><strong>Administrador</strong>. Tendrá acceso a la portada y a la parte de la aplicación de administradores.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>MAPA DE LA APLICACIÓN</h2>
+          <p>A continuación se presentan las distintas vistas de la aplicación con sus correpondientes enlaces.</p>
+          <h3>Portada</h3>
+          <iframe src="index.html"></iframe>
+          <h3>Perfiles Populares</h3>
+          <iframe src="usuario_populares.php"></iframe>
+          <h3>Mis Perfiles</h3>
+          <iframe src="usuario_mis_perfiles.html"></iframe>
+          <h3>Nuevo Perfil (Explorar)</h3>
+          <iframe src="usuario_nuevo_perfil.html"></iframe>
+          <h3>Perfil Particular</h3>
+          <iframe src="usuario_perfil_particular.html"></iframe>
+          <h3>Configuración Usuario</h3>
+          <iframe src="usuario_configuracion.html"></iframe>
+          <h3>Administrar Usuarios</h3>
+          <iframe src="admin_administrarUsuarios.html"></iframe>
+          <h3>Administrar Perfiles RRSS</h3>
+          <iframe src="admin_administrarPerfiles.html"></iframe>
+          <h3>Añadir Perfil</h3>
+          <iframe src="admin_añadirPerfil.html"></iframe>
+          <h3>Configuración administrador</h3>
+          <iframe src="admin_configuracion.html"></iframe>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>MODELO SEMÁNTICO - DESCRIPCIÓN DE LOS DATOS DE LA APLICACIÓN</h2>
+          <p>A continuación se presenta el modelo de datos de la aplicación con la descripción semántica en XML.</p>
+          <h3>USUARIOS</h3>
+          <p>Cada usuario, aparte de sus características descriptivas, contendrá la lista de perfiles con la que está relacionado.</p>
+          <pre>
+            &lt;usuarios&gt;
+              &lt;usuario>
+                  &lt;id>1&lt;/id>
+                  &lt;email>ernesto@mail.com&lt;/email>
+                  &lt;contrasena>contrasena_ernesto&lt;/contrasena>
+                  &lt;tipo_usuario>normal&lt;/tipo_usuario>
+                  &lt;nombre_usuario>ernesto&lt;/nombre_usuario>
+                  &lt;nombre_completo>ernesto boado&lt;/nombre_completo>
+                  &lt;sexo>hombre&lt;/sexo>
+                  &lt;descripcion>descripción ernesto&lt;/descripcion>
+                  &lt;perfiles>
+                      &lt;perfil>1&lt;/perfil>
+                      &lt;perfil>2&lt;/perfil>
+                  &lt;/perfiles>
+              &lt;/usuario>
+              &lt;usuario>
+                  &lt;id>2&lt;/id>
+                  &lt;email>ernesto2@mail.com&lt;/email>
+                  &lt;contrasena>contrasena_ernesto2&lt;/contrasena>
+                  &lt;tipo_usuario>administrador&lt;/tipo_usuario>
+                  &lt;nombre_usuario>ernesto2&lt;/nombre_usuario>
+                  &lt;nombre_completo>ernesto2 boado&lt;/nombre_completo>
+                  &lt;sexo>hombre&lt;/sexo>
+                  &lt;descripcion>descripción ernesto2&lt;/descripcion>
+                  &lt;perfiles>
+                      &lt;perfil>1&lt;/perfil>
+                      &lt;perfil>3&lt;/perfil>
+                  &lt;/perfiles>
+              &lt;/usuario>
+            &lt;/usuarios>
+          </pre>
+          <h3>PERFILES</h3>
+          <p>Cada perfil contendrá sus atributos principales, así como la lista de usuarios con los que se relaciona
+              y la de sus publicaciones.</p>
+          <pre>
+            &lt;perfiles>
+              &lt;perfil>
+                  &lt;id>1&lt;/id>
+                  &lt;nombre_perfil>@ernesto&lt;/nombre_perfil>
+                  &lt;descripcion>perfil de ernesto&lt;/descripcion>
+                  &lt;imagen>./imagenes/ernesto_instagram&lt;/imagen>
+                  &lt;seguidores>1000&lt;/seguidores>
+                  &lt;num_publicaciones>50&lt;/num_publicaciones>
+                  &lt;usuarios>
+                      &lt;usuario>1&lt;/usuario>
+                      &lt;usuario>2&lt;/usuario>
+                  &lt;/usuarios>
+                  &lt;publicaciones>
+                      &lt;publicacion>1&lt;/publicacion>
+                      &lt;publicacion>2&lt;/publicacion>
+                  &lt;/publicaciones>
+              &lt;/perfil>
+              &lt;perfil>
+                  &lt;id>2&lt;/id>
+                  &lt;nombre_perfil>@ernesto2&lt;/nombre_perfil>
+                  &lt;descripcion>perfil de ernesto2&lt;/descripcion>
+                  &lt;imagen>./imagenes/ernesto2_youtube&lt;/imagen>
+                  &lt;seguidores>2000&lt;/seguidores>
+                  &lt;num_publicaciones>15&lt;/num_publicaciones>
+                  &lt;usuarios>
+                      &lt;usuario>1&lt;/usuario>
+                      &lt;usuario>2&lt;/usuario>
+                  &lt;/usuarios>
+                  &lt;publicaciones>
+                      &lt;publicacion>3&lt;/publicacion>
+                      &lt;publicacion>4&lt;/publicacion>
+                  &lt;/publicaciones>
+              &lt;/perfil>
+            &lt;/perfiles>
+          </pre>
+          <h3>PUBLICACIONES</h3>
+          <p>Cada publicación dispondrá de sus atributos específicos, entre los que se cuenta el perfil al que pertenece.</p>
+          <pre>
+            &lt;publicaciones>
+              &lt;publicacion>
+                  &lt;id>1&lt;/id>
+                  &lt;titulo>publicacion1&lt;/titulo>
+                  &lt;fecha>10/10/2012&lt;/fecha>
+                  &lt;recurso_media>./imagenes/ernesto/foto1.png&lt;/recurso_media>
+                  &lt;texto>texto publicacion 1&lt;/texto>
+                  &lt;perfil>@ernesto&lt;/perfil>
+              &lt;/publicacion>
+              &lt;publicacion>
+                  &lt;id>2&lt;/id>
+                  &lt;titulo>publicacion2&lt;/titulo>
+                  &lt;fecha>10/10/2011&lt;/fecha>
+                  &lt;recurso_media>./imagenes/ernesto2/foto1.png&lt;/recurso_media>
+                  &lt;texto>texto publicacion 2&lt;/texto>
+                  &lt;perfil>@ernesto2&lt;/perfil>
+              &lt;/publicacion>
+            &lt;/publicaciones>
+          </pre>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>MODELO ENTIDAD RELACIÓN</h2>
+          <p>La siguiente imagen muestra el modelo Entidad-Relación que se utilizará para la base de datos
+              de la aplicación.</p>
+          <img src="imagenes/youtwins_entidad_relacion.png" alt="entidad-relacion">
+        </div>
+      </div>
+    </div><!--Container-->
+
+    <!--INCLUDES DE SCRIPTS NECESARIOS-->
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

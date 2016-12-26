@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios>
+    <usuario>
+        <id>1</id>
+        <email>ernesto@mail.com</email>
+        <contrasena>contrasena_ernesto</contrasena>
+        <tipo_usuario>normal</tipo_usuario>
+        <nombre_usuario>ernesto</nombre_usuario>
+        <nombre_completo>ernesto boado</nombre_completo>
+        <sexo>hombre</sexo>
+        <descripcion>descripción ernesto</descripcion>
+        <perfiles>
+            <perfil>1</perfil>
+            <perfil>2</perfil>
+        </perfiles>
+    </usuario>
+    <usuario>
+        <id>2</id>
+        <email>ernesto2@mail.com</email>
+        <contrasena>contrasena_ernesto2</contrasena>
+        <tipo_usuario>administrador</tipo_usuario>
+        <nombre_usuario>ernesto2</nombre_usuario>
+        <nombre_completo>ernesto2 boado</nombre_completo>
+        <sexo>hombre</sexo>
+        <descripcion>descripción ernesto2</descripcion>
+        <perfiles>
+            <perfil>1</perfil>
+            <perfil>3</perfil>
+        </perfiles>
+    </usuario>
+</usuarios>

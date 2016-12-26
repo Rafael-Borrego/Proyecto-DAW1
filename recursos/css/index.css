@@ -1,0 +1,105 @@
+/*IMAGEN DE FONDO*/
+body {
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #333333;
+}
+
+/*RETOQUES CONTAINER-FLUID PRINCIPAL Y BOTONES CHULOS*/
+
+    /*RETOQUES CONTAINER FLUID BARRA BUTTONS*/
+    .container-fluid {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background:none;
+    }
+
+    /*AÑADIR SCROLL AL CONTENT DEL ABOUT*/
+    .morph-button-overlay.open .morph-content {
+        overflow: auto;
+    }
+
+    /*CAMBIAR ESPACIADO LETRAS Y RESET MARGIN/PADDING*/
+    .morph-button > button {
+    	font-size: 150%; 
+        letter-spacing: 4px;
+        /*margin: 5px;*/
+        padding: 0;
+        width: 100%;
+    }
+
+    /*RESET DE LOS MARGIN/PADDING DE LOS BUTTONS*/
+    .morph-button.morph-button-modal-2,
+    .morph-button.morph-button-modal-3,
+    .morph-button.morph-button-overlay {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /*CAMBIO DE COLORES DE LOS BUTTONS Y LOS DIALOGOS*/
+    .morph-button.morph-button-modal-3 > button {
+        background-color: #D22;
+        color: #f9f6e5;
+    }
+
+    .morph-button-modal-3 .morph-content {
+            background: #D22;
+            color: white;
+        }
+
+    .morph-button.morph-button-modal-2 > button {
+        background-color: #2AF;;
+        color: #f9f6e5;
+    }
+
+    .morph-button-modal-2 .morph-content {
+        background: #2AF;
+        color: white;
+    }
+
+    .morph-button.morph-button-overlay > button {
+        background-color: #a3b;
+        color: #f9f6e5;
+    }
+
+    .morph-button-overlay .morph-content {
+        overflow: hidden;
+        background: #a3b;
+        color: white;
+    }
+
+    /*CAMBIO DE COLORES DE LOS FORMULARIOS DE LOS DIALOGOS LOGIN-REGISTRO*/
+    .content-style-form input[type="text"],
+    .content-style-form input[type="password"] {
+        color: white;
+        font-weight: 300;
+        font-size: 2.2em;
+    }
+
+    .content-style-form input[type="text"]:focus,
+    .content-style-form input[type="password"]:focus {
+        border-color: white;
+        color: white;
+    }
+
+      .content-style-form button{
+        background: #0062F0;
+    }
+
+
+    .content-style-form button.boton2 {
+        background: #9B1B29;
+    }
+
+
+    .content-style-form label {
+        color: white;
+    }
+
+/*++++++++++++++++++++++++*/
+
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<perfiles>
+    <perfil>
+        <id>1</id>
+        <nombre_perfil>@ernesto</nombre_perfil>
+        <descripcion>perfil de ernesto</descripcion>
+        <imagen>./imagenes/ernesto_instagram</imagen>
+        <seguidores>1000</seguidores>
+        <num_publicaciones>50</num_publicaciones>
+        <usuarios>
+            <usuario>1</usuario>
+            <usuario>2</usuario>
+        </usuarios>
+        <publicaciones>
+            <publicacion>1</publicacion>
+            <publicacion>2</publicacion>
+        </publicaciones>
+    </perfil>
+    <perfil>
+        <id>2</id>
+        <nombre_perfil>@ernesto2</nombre_perfil>
+        <descripcion>perfil de ernesto2</descripcion>
+        <imagen>./imagenes/ernesto2_youtube</imagen>
+        <seguidores>2000</seguidores>
+        <num_publicaciones>15</num_publicaciones>
+        <usuarios>
+            <usuario>1</usuario>
+            <usuario>2</usuario>
+        </usuarios>
+        <publicaciones>
+            <publicacion>3</publicacion>
+            <publicacion>4</publicacion>
+        </publicaciones>
+    </perfil>
+</perfiles>
