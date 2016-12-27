@@ -21,16 +21,19 @@ class ScrapperInstagram
 
     /*---MÉTODOS---*/
     /*---Constructor de la clase*/
-    public function __construct($nombre_usuario)
+    public function __construct($nombre_usuario=null)
     {
-        $this->nombre_usuario = $nombre_usuario;
-        $this->cuenta_instagram = Instagram::getAccount($this->nombre_usuario);
-        $this->id_usuario = $this->cuenta_instagram->id;
-        $this->nombre_completo = $this->cuenta_instagram->fullName;
-        $this->numero_publicaciones = $this->cuenta_instagram->mediaCount;
-        $this->numero_seguidores = $this->cuenta_instagram->followedByCount;
-        $this->numero_seguidos = $this->cuenta_instagram->followsCount;
-        $this->array_media = Instagram::getMedias($this->nombre_usuario, 30/*$this->numero_publicaciones*/);
+        if ($nombre_usuario){
+            $this->nombre_usuario = $nombre_usuario;
+            $this->cuenta_instagram = Instagram::getAccount($this->nombre_usuario);
+            $this->id_usuario = $this->cuenta_instagram->id;
+            $this->nombre_completo = $this->cuenta_instagram->fullName;
+            $this->numero_publicaciones = $this->cuenta_instagram->mediaCount;
+            $this->numero_seguidores = $this->cuenta_instagram->followedByCount;
+            $this->numero_seguidos = $this->cuenta_instagram->followsCount;
+            $this->array_media = Instagram::getMedias($this->nombre_usuario, 30/*$this->numero_publicaciones*/);
+        }
+
     }
 
     /*---Método para mostrar la información básica del perfil de instagram*/
@@ -120,6 +123,13 @@ class ScrapperInstagram
         print_r("<br/><br/>");
 
         return $array_resultado;
+    }
+
+    /*Método para buscar perfiles en Instagram*/
+    public function buscar_perfiles($termino_búsqueda)
+    {
+        $perfiles = Instagram::searchAccountsByUsername($termino_búsqueda);
+        return $perfiles;
     }
 }
 

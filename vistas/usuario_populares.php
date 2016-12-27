@@ -40,6 +40,8 @@ $array_perfiles_populares = [
     <link href="../recursos/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS Propio -->
     <link href="../recursos/css/usuario_populares.css" rel="stylesheet">
+    <script src="../recursos/sweetalert/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../recursos/sweetalert/css/sweetalert.css">
 </head>
 
 <body>
@@ -70,6 +72,8 @@ $array_perfiles_populares = [
                     <!--ICONO USUARIO-LOGOUT-->
                     <?php include("../piezas/icono_usuario_logout.php"); ?>
 
+                    <button class="mostrar_dialogo">Mostrar diálogo</button>
+
                     <!--CONTENIDO VISTA-->
                     <?php
                     foreach (range(0, 3) as $indice) {
@@ -90,6 +94,9 @@ $array_perfiles_populares = [
 <script src="../recursos/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <!--JS Propio (necesita jQuery)-->
 <script src="../recursos/js/admin_usuario.js"></script>
+<!-- Script para ventana emergente-->
+<script src="../recursos/js/dialogos_emergentes.js"></script>
+
 </body>
 
 </html>
