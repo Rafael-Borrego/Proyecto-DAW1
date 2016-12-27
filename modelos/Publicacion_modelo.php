@@ -13,14 +13,34 @@ class Publicacion_Modelo
         $this->conexion =  $database->conectar();
     }
 
-    /*Devuelve un array asociativo con todos las publicaciones de la DB*/
+    /*Devuelve un array asociativo con todos las publicaciones de la DB ordenados por fecha de creación*/
     public function get_all_publicaciones()
     {
-        $query = "SELECT * FROM Publicacion";
+        $query = "SELECT * FROM Publicacion ORDER BY fecha_creacion";
         $resultado = $this->conexion->query($query)->fetch_all(MYSQLI_ASSOC);
 
         return $resultado;
     }
+
+    /*Devuelve un el número total de publicaciones en la tabla*/
+    public function get_total_publicaciones()
+    {
+        $query = "SELECT COUNT(*) FROM Publicacion";
+        $resultado = $this->conexion->query($query)->fetch_row()[0];
+
+        return $resultado;
+    }
+
+    /*Devuelve un array asociativo con todos las publicaciones de la DB ordenados por fecha de creación*/
+    public function get_pag_publicaciones($filas_por_pagina, $offset)
+    {
+        $query = "SELECT * FROM Publicacion ORDER BY fecha_creacion LIMIT $filas_por_pagina OFFSET $offset";
+        $resultado = $this->conexion->query($query)->fetch_all(MYSQLI_ASSOC) or die ($this->conexion->error . " No se pudo recuperar los datos correctamente");
+
+        return $resultado;
+    }
+
+
 
     /*Devuelve un array asociativo con todos las publicaciones de un perfil de la DB*/
     public function get_publicaciones_perfil($id_perfil)
