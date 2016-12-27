@@ -1,7 +1,6 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/vendor/autoload.php";
-//require_once "../vendor/autoload.php";
 use InstagramScraper\Instagram;
 use InstagramScraper\Model\Media;
 
@@ -71,12 +70,9 @@ class ScrapperInstagram
 
         //Se recorre el array de media resources y se descargan en la carpeta
         foreach ($this->array_media as $indice => $elemento) {
-            //echo "+++Descargando Recurso "/*.(10-$indice).".*/.($this->numero_publicaciones-$indice)."\n\tTIPO=> ".$elemento->type/*."\n\tURL=> "*/;
             print_r("+++Descargando recurso " . date('Y-m-d H:i:s', $elemento->createdTime) . "
                         <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTipo=> " . $elemento->type);
             if ($elemento->type == "video") {//CASO VÍDEO
-                //echo $elemento->videoStandardResolutionUrl."\n";
-                //$nombre_archivo = $this->nombre_usuario."_"/*.(10-$indice).*/.($this->numero_publicaciones-$indice).'.mp4';
                 $nombre_archivo = date('Y-m-d H:i:s', $elemento->createdTime) . ".mp4";
                 if (!file_exists($nombre_archivo)) {
                     copy($elemento->videoStandardResolutionUrl, $nombre_archivo);
@@ -86,8 +82,6 @@ class ScrapperInstagram
                     $num_repetidos++;
                 }
             } else {//CASO IMAGEN
-                //echo $elemento->imageHighResolutionUrl."\n";
-                //$nombre_archivo = $this->nombre_usuario."_"/*.(10-$indice).*/.($this->numero_publicaciones-$indice).'.png';
                 $nombre_archivo = date('Y-m-d_H-i-s', $elemento->createdTime) . ".png";
                 if (!file_exists($nombre_archivo)) {
                     copy($elemento->imageHighResolutionUrl, $nombre_archivo);

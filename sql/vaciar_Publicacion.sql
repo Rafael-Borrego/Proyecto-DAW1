@@ -1,0 +1,1 @@
+TRUNCATE TABLE `daw1_database`.`Publicacion`;

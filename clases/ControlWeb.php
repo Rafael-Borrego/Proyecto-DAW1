@@ -69,6 +69,7 @@ class ControlWeb
         return true;
     }
 
+    /*Función que registra un usuario (lo inserta en la DB)*/
     function registrar($email, $password, $tipo_usuario, $nombre_usuario, $nombre_completo, $sexo, $descripcion)
     {
         //VALIDAR CAMPOS FORMULARIOS
@@ -79,6 +80,16 @@ class ControlWeb
             return false;
         }
         return true;
+    }
+
+    /*Función que realiza el logout de un usuario borrando la correspondiente variable de sesión*/
+    function logout()
+    {
+        session_start();
+
+        $_SESSION["usuario_logueado"]=NULL;
+
+        unset($_SESSION["usuario_logueado"]);
     }
 
 

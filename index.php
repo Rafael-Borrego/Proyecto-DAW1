@@ -7,6 +7,18 @@ $titulo_vista = "PORTADA YOUTWINS";
 $control_web = new ControlWeb();
 $usuario_incorrecto = false;
 $registro_incorrecto = false;
+$logout_realizado = false;
+
+//COMPROBACIÓN PARA LOGOUT
+if ($_GET["logout"]=="1"){
+    $control_web->logout();
+    $logout_realizado = true;
+}
+
+//REDIRECCIÓN SI EL USUARIO ESTÁ LOGUEADO
+if ($control_web->esta_usuario_logueado()){
+    $control_web->redireccionar_a("vistas/usuario_populares.php");
+}
 
 //SI LA PÁGINA SE CARGA DESPUÉS DE ENVIAR EL FORMULARIO DE LOGUEO
 if(isset($_POST['submitted_login']))
@@ -78,6 +90,8 @@ elseif(isset($_POST['submitted_registro']))
                     {
                         print_r("REGISTRO INCORRECTO\n");
                     }
+                    if ($logout_realizado) print_r($_SESSION["usuario_logueado"]);
+                    //print_r($_SESSION);
                 ?>
             </h1>
         </div>

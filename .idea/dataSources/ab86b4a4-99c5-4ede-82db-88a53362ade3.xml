@@ -70,7 +70,7 @@
     </column>
     <column id="23" parent="8" name="texto">
       <Position>5</Position>
-      <DataType>varchar(1000)|0</DataType>
+      <DataType>varchar(300)|0</DataType>
     </column>
     <column id="24" parent="8" name="id_perfil">
       <Position>6</Position>
@@ -83,7 +83,7 @@
     </column>
     <column id="26" parent="8" name="ruta_recurso_media">
       <Position>4</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(300)|0</DataType>
     </column>
     <index id="27" parent="8" name="fk_Publicacion_Perfil1_idx">
       <ColNames>id_perfil</ColNames>
