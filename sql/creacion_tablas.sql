@@ -36,9 +36,9 @@ ENGINE = InnoDB;
 -- Table `daw1_database`.`Perfil`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `daw1_database`.`Perfil` (
-  `id_perfil` INT NOT NULL AUTO_INCREMENT,
+  `id_perfil` VARCHAR(100) NOT NULL,
   `nombre_perfil` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(200) NULL,
   `imagen` VARCHAR(45) NULL,
   `seguidores` INT NULL,
   `num_publicaciones` INT NULL,
@@ -52,12 +52,12 @@ ENGINE = InnoDB;
 -- Table `daw1_database`.`Publicacion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `daw1_database`.`Publicacion` (
-  `id_publicacion` INT NOT NULL AUTO_INCREMENT,
+  `id_publicacion` VARCHAR(100) NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
-  `fecha` DATE NULL,
-  `recurso_media` VARCHAR(45) NULL,
-  `texto` VARCHAR(45) NULL,
-  `id_perfil` INT NOT NULL,
+  `fecha_creacion` DATETIME NULL,
+  `ruta_recurso_media` VARCHAR(300) NULL,
+  `texto` VARCHAR(300) NULL,
+  `id_perfil` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_publicacion`, `id_perfil`),
   UNIQUE INDEX `id_publicacion_UNIQUE` (`id_publicacion` ASC),
   INDEX `fk_Publicacion_Perfil1_idx` (`id_perfil` ASC),
@@ -74,7 +74,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `daw1_database`.`Usuario_Perfil` (
   `id_usuario` INT NOT NULL,
-  `id_perfil` INT NOT NULL,
+  `id_perfil` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_usuario`, `id_perfil`),
   INDEX `fk_Usuario_has_Perfil_Perfil1_idx` (`id_perfil` ASC),
   INDEX `fk_Usuario_has_Perfil_Usuario_idx` (`id_usuario` ASC),
