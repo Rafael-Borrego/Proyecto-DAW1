@@ -65,8 +65,21 @@ class Usuario_Modelo
     {
         $query = "INSERT INTO Usuario (email, contrasena, tipo_usuario, nombre_usuario, nombre_completo, sexo, descripcion) 
                   VALUES ('$email', '$password', '$tipo_usuario', '$nombre_usuario', '$nombre_completo', '$sexo', '$descripcion')";
-        $resultado = $this->conexion->query($query);// or die ($this->conexion->error . "Data cannot be inserted");;
+        $resultado = $this->conexion->query($query);// or die ($this->conexion->error . " No se pudo insertar correctamente");;
         if (!$resultado) {return false;}
+        return true;
+    }
+
+    /*Actualiza los datos de un usuario*/
+    public function actualizar_usuario($id_usuario, $email, $password, $tipo_usuario, $nombre_usuario, $nombre_completo, $sexo, $descripcion)
+    {
+        $query = "UPDATE Usuario 
+                  SET email='$email', contrasena='$password', tipo_usuario='$tipo_usuario', nombre_usuario='$nombre_usuario',
+                      nombre_completo='$nombre_completo', sexo='$sexo', descripcion='$descripcion'
+                  WHERE id_usuario='$id_usuario'";
+        $resultado = $this->conexion->query($query);// or die ($this->conexion->error . " No se pudo actualizar correctamente");;
+        if (!$resultado) {return false;}
+
         return true;
     }
 }

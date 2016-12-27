@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `daw1_database`.`Usuario` (
   `nombre_completo` VARCHAR(45) NULL,
   `sexo` VARCHAR(45) NULL,
   `descripcion` VARCHAR(45) NULL,
+  `aficiones` BLOB NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE INDEX `id_usuario_UNIQUE` (`id_usuario` ASC))
 ENGINE = InnoDB;
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `daw1_database`.`Perfil` (
   `imagen` VARCHAR(45) NULL,
   `seguidores` INT NULL,
   `num_publicaciones` INT NULL,
+  `categoria` VARCHAR(45) NULL,
   PRIMARY KEY (`id_perfil`),
   UNIQUE INDEX `id_perfil_UNIQUE` (`id_perfil` ASC))
 ENGINE = InnoDB;
