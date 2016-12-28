@@ -22,6 +22,15 @@ class Usuario_Modelo
         return $resultado;
     }
 
+    /*Devuelve un array asociativo con todos los usuarios de la DB ordenados por id*/
+    public function get_pag_usuarios($filas_por_pagina, $offset)
+    {
+        $query = "SELECT * FROM Usuario ORDER BY id_usuario LIMIT $filas_por_pagina OFFSET $offset";
+        $resultado = $this->conexion->query($query)->fetch_all(MYSQLI_ASSOC) or die ($this->conexion->error . " No se pudo recuperar los datos correctamente");
+
+        return $resultado;
+    }
+
     /*Comprueba si existen las credenciales de logueo (email, password) en la DB*/
     public function comprobar_login_usuario($email, $password)
     {

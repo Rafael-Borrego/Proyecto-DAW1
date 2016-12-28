@@ -12,8 +12,14 @@ function pretty_print($var = false)
     echo $var . "\n</pre>\n";
 }
 
+//IMPRIMIR TODOS LOS RESULTADOS DE BÚSQUEDA
 //pretty_print($resultado_busqueda);
 
-foreach ($resultado_busqueda as $elemento){
-    echo "<p><img src=".$elemento->profilePicUrl." >".$elemento->username."</p>";
+//MOSTRAR RESULTADOS CON PAGINACIÓN DE PARÁMETROS URL
+if (isset($_GET["offset"]) && isset($_GET["resultados_por_pagina"])) {
+    foreach (array_slice($resultado_busqueda, $_GET["offset"], $_GET["resultados_por_pagina"]) as $elemento) {
+        echo "<p><img src=" . $elemento->profilePicUrl . " >" . $elemento->username . "</p>";
+    }
+}else {
+    print_r("SIN RESULTADOS");
 }

@@ -5,7 +5,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ScraperInstagram
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Publicacion_modelo.php";
 
 $modelo_publicaciones = new Publicacion_Modelo();
-$scrapper = new ScrapperInstagram("leomessi");
+$scrapper = new ScrapperInstagram("neymarjr");
 $scrapper->echo_basic_info();
 
 function pretty_print($var = false)
@@ -29,3 +29,7 @@ foreach ($array_publicaciones as $indice => $elemento){
 
 print_r("CONTENIDO TABLA PUBLICACIONES"."<br/>");
 pretty_print($modelo_publicaciones->get_all_publicaciones());
+//pretty_print($modelo_publicaciones->get_publicaciones_perfil($scrapper->id_usuario));
+/*$modelo_publicaciones = new Publicacion_Modelo();
+$publicaciones_perfil = $modelo_publicaciones->get_publicaciones_perfil("leomessi");
+pretty_print($publicaciones_perfil);*/

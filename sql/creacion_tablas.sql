@@ -38,9 +38,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `daw1_database`.`Perfil` (
   `id_perfil` VARCHAR(100) NOT NULL,
   `nombre_perfil` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(200) NULL,
-  `imagen` VARCHAR(45) NULL,
-  `seguidores` INT NULL,
+  `descripcion` VARCHAR(300) NULL,
+  `url_imagen` VARCHAR(300) NULL,
+  `num_seguidores` INT NULL,
   `num_publicaciones` INT NULL,
   `categoria` VARCHAR(45) NULL,
   PRIMARY KEY (`id_perfil`),

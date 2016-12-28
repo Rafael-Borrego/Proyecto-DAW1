@@ -10,14 +10,16 @@ class ScrapperInstagram
 {
 
     /*---ATRIBUTOS---*/
-    private $nombre_usuario;
-    private $id_usuario;
-    private $nombre_completo;
-    private $numero_publicaciones;
-    private $numero_seguidores;
-    private $numero_seguidos;
-    private $cuenta_instagram;
-    private $array_media;
+    public $nombre_usuario;
+    public $id_usuario;
+    public $url_imagen;
+    public $nombre_completo;
+    public $descripcion;
+    public $numero_publicaciones;
+    public $numero_seguidores;
+    public $numero_seguidos;
+    public $cuenta_instagram;
+    public $array_media;
 
     /*---MÉTODOS---*/
     /*---Constructor de la clase*/
@@ -27,7 +29,9 @@ class ScrapperInstagram
             $this->nombre_usuario = $nombre_usuario;
             $this->cuenta_instagram = Instagram::getAccount($this->nombre_usuario);
             $this->id_usuario = $this->cuenta_instagram->id;
+            $this->url_imagen = $this->cuenta_instagram->profilePicUrl;
             $this->nombre_completo = $this->cuenta_instagram->fullName;
+            $this->descripcion = $this->cuenta_instagram->biography;
             $this->numero_publicaciones = $this->cuenta_instagram->mediaCount;
             $this->numero_seguidores = $this->cuenta_instagram->followedByCount;
             $this->numero_seguidos = $this->cuenta_instagram->followsCount;
@@ -109,7 +113,7 @@ class ScrapperInstagram
                 "id_publicacion" => $elemento->id,
                 "titulo" => strlen($elemento->caption) < 20 ? $elemento->caption : substr($elemento->caption, 0, 20) . "...",
                 "fecha_creacion" => date('Y-m-d H:i:s', $elemento->createdTime),
-                "ruta_recurso_media" => $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/descargas_rrss/instagram/" .
+                "ruta_recurso_media" => /*$_SERVER["DOCUMENT_ROOT"] . */"http://localhost/proyecto_daw1/descargas_rrss/instagram/" .
                     $this->nombre_usuario . "/" . $nombre_archivo,
                 "texto" => $elemento->caption,
                 "id_perfil" => $this->id_usuario,
