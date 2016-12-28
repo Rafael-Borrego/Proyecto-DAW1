@@ -1,6 +1,15 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/proyecto_daw1/clases/ControlWeb.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
+
+
+function pretty_print($var = false)
+{
+    echo "\n<pre style=\"background: #FFFF99; font-size: 10px;\">\n";
+    $var = print_r($var, true);
+    echo $var . "\n</pre>\n";
+}
 
 /*SE COMPRUEBA SI EL USUARIO ESTÁ LOGUEADO, SI NO LO ESTÁ, SE REDIRECCIONA AL INDEX.PHP*/
 $control_web = new ControlWeb();
@@ -13,19 +22,14 @@ if (!$control_web->esta_usuario_logueado())
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
-//LA VISTA TIENE QUE RECIBIR UN ARRAY ASOCIATIVO CON LAS CATEGORÍAS POPULARES Y LOS PERFILES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 $titulo_vista = "PERFILES POPULARES";
-$nombre_categoria = "CATEGORIA PRUEBA 1";
-$array_perfiles_populares = [
-    ["nombre_perfil" => "perfil_prueba1",
-        "ruta_imagen_perfil" => "../recursos/imagenes/instagram-generic-1920.jpg\" alt=\"sample102"],
-    ["nombre_perfil" => "perfil_prueba2",
-        "ruta_imagen_perfil" => "../recursos/imagenes/twitter_1200.jpg\" alt=\"sample102"],
-    ["nombre_perfil" => "perfil_prueba3",
-        "ruta_imagen_perfil" => "../recursos/imagenes/youtube_1200.jpg\" alt=\"sample102"],
+//ESTE ARRAY CAMBIARÁ DEPENDIENDO DE LAS AFICIONES DEL USUARIO
+$nombres_categorias = [
+        "deportes",
+        "musica",
 ];
-
+$modelo_perfiles = new Perfil_modelo();
 
 ?>
 
@@ -76,7 +80,9 @@ $array_perfiles_populares = [
 
                     <!--CONTENIDO VISTA-->
                     <?php
-                    foreach (range(0, 3) as $indice) {
+                    foreach ($nombres_categorias as $nombre_categoria){
+                        $array_perfiles_populares = $modelo_perfiles->get_perfiles_categoria($nombre_categoria, 3);
+                        //pretty_print($array_perfiles_populares);
                         include("../piezas/fila_categoría_populares.php");
                     }
                     ?>

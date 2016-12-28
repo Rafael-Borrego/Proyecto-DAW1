@@ -13,26 +13,72 @@ function pretty_print($elemento = false)
 
 
 $lista_perfiles = [
-    "leomessi",
-    "neymarjr",
-    "3gerardpique",
-    "luissuarez9",
-    "mterstegen1",
-    "samumtiti",
-    "sergiroberto",
-    "andresiniesta8",
-    "ivanrakitic",
+    //DEPORTES
+    [
+        "leomessi",
+        "deportes",
+    ],
+    [
+        "neymarjr",
+        "deportes",
+    ],
+    [
+        "3gerardpique",
+        "deportes",
+    ],
+    [
+        "luissuarez9",
+        "deportes",
+    ],
+    [
+        "mterstegen1",
+        "deportes",
+    ],
+    [
+        "samumtiti",
+        "deportes",
+    ],
+    [
+        "sergiroberto",
+        "deportes",
+    ],
+    [
+        "andresiniesta8",
+        "deportes",
+    ],
+    [
+        "ivanrakitic",
+        "deportes",
+    ],
+    //MUSICA
+    [
+        "ledzeppelin",
+        "musica",
+    ],
+    [
+        "etjusticepourtous",
+        "musica",
+    ],
+    [
+        "billytalentband",
+        "musica",
+    ],
+    [
+        "bmthofficial",
+        "musica",
+    ],
+
 ];
 
 $modelo_perfiles = new Perfil_modelo();
 $modelo_publicaciones = new Publicacion_Modelo();
 
 foreach ($lista_perfiles as $elemento){
-    $scrapper = new ScrapperInstagram($elemento);
+    $scrapper = new ScrapperInstagram($elemento[0]);
     //INSERCIÓN EN DB DEL PERFIL
     if (!$modelo_perfiles->insertar_perfil($scrapper->id_usuario, $scrapper->nombre_usuario, $scrapper->descripcion,
         $scrapper->url_imagen, $scrapper->numero_seguidores, $scrapper->numero_publicaciones,
-        "deportes")){
+        $elemento[1])){
         print_r("Fallo en la inserción del perfil $scrapper->nombre_usuario (Posiblemente Repetido)"."<br/>");
     }
 

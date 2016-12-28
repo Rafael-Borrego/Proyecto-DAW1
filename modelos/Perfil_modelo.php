@@ -32,9 +32,10 @@ class Perfil_modelo
     }
 
     /*Devuelve un array asociativo con todos los perfiles de la DB para una categoría*/
-    public function get_perfiles_categoria($categoria)
+    public function get_perfiles_categoria($categoria, $limite= false)
     {
-        $query = "SELECT * FROM Perfil WHERE categoria='$categoria'";
+        if (limite) $query = "SELECT * FROM Perfil WHERE categoria='$categoria' ORDER BY num_seguidores DESC LIMIT $limite";
+        else $query = "SELECT * FROM Perfil WHERE categoria='$categoria'";
         $resultado = $this->conexion->query($query)->fetch_all(MYSQLI_ASSOC);
 
         return $resultado;
