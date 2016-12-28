@@ -35,7 +35,7 @@ class ScrapperInstagram
             $this->numero_publicaciones = $this->cuenta_instagram->mediaCount;
             $this->numero_seguidores = $this->cuenta_instagram->followedByCount;
             $this->numero_seguidos = $this->cuenta_instagram->followsCount;
-            $this->array_media = Instagram::getMedias($this->nombre_usuario, 30/*$this->numero_publicaciones*/);
+            $this->array_media = Instagram::getMedias($this->nombre_usuario, 10/*$this->numero_publicaciones*/);
         }
 
     }
@@ -77,15 +77,15 @@ class ScrapperInstagram
 
         //Se recorre el array de media resources y se descargan en la carpeta
         foreach ($this->array_media as $indice => $elemento) {
-            print_r("+++Descargando recurso " . date('Y-m-d H:i:s', $elemento->createdTime) . "
-                        <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTipo=> " . $elemento->type);
+            //print_r("+++Descargando recurso " . date('Y-m-d H:i:s', $elemento->createdTime) . "
+             //           <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTipo=> " . $elemento->type);
             if ($elemento->type == "video") {//CASO VÍDEO
                 $nombre_archivo = date('Y-m-d H:i:s', $elemento->createdTime) . ".mp4";
                 if (!file_exists($nombre_archivo)) {
                     copy($elemento->videoStandardResolutionUrl, $nombre_archivo);
                     print_r("<br/>");
                 } else {
-                    print_r("  NO SE DESCARGA PORQUE YA ESTÁ GUARDADO" . "<br/>");
+                    //print_r("  NO SE DESCARGA PORQUE YA ESTÁ GUARDADO" . "<br/>");
                     $num_repetidos++;
                 }
             } else {//CASO IMAGEN
@@ -94,7 +94,7 @@ class ScrapperInstagram
                     copy($elemento->imageHighResolutionUrl, $nombre_archivo);
                     print_r("<br/>");
                 } else {
-                    print_r("  NO SE DESCARGA PORQUE YA ESTÁ GUARDADO" . "<br/>");
+                    //print_r("  NO SE DESCARGA PORQUE YA ESTÁ GUARDADO" . "<br/>");
                     $num_repetidos++;
                 }
             }
@@ -116,6 +116,8 @@ class ScrapperInstagram
                 "ruta_recurso_media" => /*$_SERVER["DOCUMENT_ROOT"] . */"http://localhost/proyecto_daw1/descargas_rrss/instagram/" .
                     $this->nombre_usuario . "/" . $nombre_archivo,
                 "texto" => $elemento->caption,
+                "origen_publicacion" => "instagram",
+                "tipo_recurso_media" => $elemento->type,
                 "id_perfil" => $this->id_usuario,
             ];
         }

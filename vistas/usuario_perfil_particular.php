@@ -26,7 +26,8 @@ $publicaciones_perfil = $modelo_publicaciones->get_publicaciones_perfil($perfil[
 $array_publicaciones_vista = array();
 foreach ($publicaciones_perfil as $indice => $elemento){
     $array_publicaciones_vista[$indice]["titulo_publicacion"] = $elemento["titulo"];
-    $array_publicaciones_vista[$indice]["imagen_publicacion"] = $elemento["ruta_recurso_media"];
+    $array_publicaciones_vista[$indice]["tipo_publicacion"] = $elemento["tipo_recurso_media"];
+    $array_publicaciones_vista[$indice]["src_publicacion"] = $elemento["ruta_recurso_media"];
     //"http://localhost/proyecto_daw1/descargas_rrss/instagram/leomessi/2015-07-13_18-51-40.png"
     $array_publicaciones_vista[$indice]["texto_publicacion"] = $elemento["texto"];
 }

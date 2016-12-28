@@ -57,6 +57,8 @@ CREATE TABLE IF NOT EXISTS `daw1_database`.`Publicacion` (
   `fecha_creacion` DATETIME NULL,
   `ruta_recurso_media` VARCHAR(300) NULL,
   `texto` VARCHAR(300) NULL,
+  `origen_publicacion` VARCHAR(30),
+  `tipo_recurso_media` VARCHAR(30),
   `id_perfil` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_publicacion`, `id_perfil`),
   UNIQUE INDEX `id_publicacion_UNIQUE` (`id_publicacion` ASC),

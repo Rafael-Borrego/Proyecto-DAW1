@@ -73,7 +73,7 @@
       <DataType>varchar(300)|0</DataType>
     </column>
     <column id="24" parent="8" name="id_perfil">
-      <Position>6</Position>
+      <Position>8</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
@@ -85,23 +85,31 @@
       <Position>4</Position>
       <DataType>varchar(300)|0</DataType>
     </column>
-    <index id="27" parent="8" name="fk_Publicacion_Perfil1_idx">
+    <column id="27" parent="8" name="origen_publicacion">
+      <Position>6</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="28" parent="8" name="tipo_recurso_media">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <index id="29" parent="8" name="fk_Publicacion_Perfil1_idx">
       <ColNames>id_perfil</ColNames>
     </index>
-    <index id="28" parent="8" name="id_publicacion_UNIQUE">
+    <index id="30" parent="8" name="id_publicacion_UNIQUE">
       <ColNames>id_publicacion</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="29" parent="8" name="PRIMARY">
+    <key id="31" parent="8" name="PRIMARY">
       <ColNames>id_publicacion
 id_perfil</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="30" parent="8" name="id_publicacion_UNIQUE">
+    <key id="32" parent="8" name="id_publicacion_UNIQUE">
       <ColNames>id_publicacion</ColNames>
       <UnderlyingIndexName>id_publicacion_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="31" parent="8" name="fk_Publicacion_Perfil1">
+    <foreign-key id="33" parent="8" name="fk_Publicacion_Perfil1">
       <ColNames>id_perfil</ColNames>
       <RefSchemaName>daw1_database</RefSchemaName>
       <RefTableName>Perfil</RefTableName>
@@ -109,81 +117,81 @@ id_perfil</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="32" parent="9" name="id_usuario">
+    <column id="34" parent="9" name="id_usuario">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="33" parent="9" name="email">
+    <column id="35" parent="9" name="email">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="9" name="contrasena">
+    <column id="36" parent="9" name="contrasena">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="35" parent="9" name="tipo_usuario">
+    <column id="37" parent="9" name="tipo_usuario">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="36" parent="9" name="nombre_usuario">
+    <column id="38" parent="9" name="nombre_usuario">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="37" parent="9" name="nombre_completo">
+    <column id="39" parent="9" name="nombre_completo">
       <Position>6</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="38" parent="9" name="sexo">
+    <column id="40" parent="9" name="sexo">
       <Position>7</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="39" parent="9" name="descripcion">
+    <column id="41" parent="9" name="descripcion">
       <Position>8</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="40" parent="9" name="aficiones">
+    <column id="42" parent="9" name="aficiones">
       <Position>9</Position>
       <DataType>blob|0</DataType>
     </column>
-    <index id="41" parent="9" name="id_usuario_UNIQUE">
+    <index id="43" parent="9" name="id_usuario_UNIQUE">
       <ColNames>id_usuario</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="42" parent="9" name="PRIMARY">
+    <key id="44" parent="9" name="PRIMARY">
       <ColNames>id_usuario</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="43" parent="9" name="id_usuario_UNIQUE">
+    <key id="45" parent="9" name="id_usuario_UNIQUE">
       <ColNames>id_usuario</ColNames>
       <UnderlyingIndexName>id_usuario_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="44" parent="10" name="id_usuario">
+    <column id="46" parent="10" name="id_usuario">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="45" parent="10" name="id_perfil">
+    <column id="47" parent="10" name="id_perfil">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="46" parent="10" name="fk_Usuario_has_Perfil_Perfil1_idx">
+    <index id="48" parent="10" name="fk_Usuario_has_Perfil_Perfil1_idx">
       <ColNames>id_perfil</ColNames>
     </index>
-    <index id="47" parent="10" name="fk_Usuario_has_Perfil_Usuario_idx">
+    <index id="49" parent="10" name="fk_Usuario_has_Perfil_Usuario_idx">
       <ColNames>id_usuario</ColNames>
     </index>
-    <key id="48" parent="10" name="PRIMARY">
+    <key id="50" parent="10" name="PRIMARY">
       <ColNames>id_usuario
 id_perfil</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="49" parent="10" name="fk_Usuario_has_Perfil_Usuario">
+    <foreign-key id="51" parent="10" name="fk_Usuario_has_Perfil_Usuario">
       <ColNames>id_usuario</ColNames>
       <RefSchemaName>daw1_database</RefSchemaName>
       <RefTableName>Usuario</RefTableName>
@@ -191,7 +199,7 @@ id_perfil</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="50" parent="10" name="fk_Usuario_has_Perfil_Perfil1">
+    <foreign-key id="52" parent="10" name="fk_Usuario_has_Perfil_Perfil1">
       <ColNames>id_perfil</ColNames>
       <RefSchemaName>daw1_database</RefSchemaName>
       <RefTableName>Perfil</RefTableName>

@@ -16,11 +16,14 @@ $scrapper = new ScrapperInstagram("neymarjr");
 
 
 //INSERCIÓN DE UN PERFIL
-if (!$modelo_perfiles->insertar_perfil($scrapper->id_usuario, $scrapper->nombre_usuario, $scrapper->descripcion,
+/*if (!$modelo_perfiles->insertar_perfil($scrapper->id_usuario, $scrapper->nombre_usuario, $scrapper->descripcion,
                                         $scrapper->url_imagen, $scrapper->numero_seguidores, $scrapper->numero_publicaciones,
                                         "deportes")){
     print_r("Fallo en la inserción"."<br/>");
-}
+}*/
 
 //ENCONTRAR PERFIL POR NOMBRE
 print_r($modelo_perfiles->get_perfil_de_nombre("leomessi"));
+
+
+pretty_print($modelo_perfiles->buscar_perfiles("neymar"));

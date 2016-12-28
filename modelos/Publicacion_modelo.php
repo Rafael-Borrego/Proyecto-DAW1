@@ -52,13 +52,20 @@ class Publicacion_Modelo
     }
 
     /*Inserta una publicación en la tabla Publicacion*/
-    public function insertar_publicacion($id_publicacion, $titulo, $fecha_creacion, $ruta_recurso_media, $texto, $id_perfil)
+    public function insertar_publicacion($id_publicacion, $titulo, $fecha_creacion, $ruta_recurso_media, $texto,
+                                         $origen_publicacion, $tipo_recurso_media, $id_perfil)
     {
         //SI NO EXISTE EL PERFIL NO VA A INSERTAR POR LA FOREIGN KEY!!!!!!!!
 
-        $query = "INSERT INTO Publicacion (id_publicacion, titulo, fecha_creacion, ruta_recurso_media, texto, id_perfil) 
-                  VALUES ('$id_publicacion', '$titulo', '$fecha_creacion', '$ruta_recurso_media', '$texto', '$id_perfil')";
-        $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo insertar correctamente")*/;
+        //ADAPTAR STRINGS PARA QUE NO DEN PROBLEMAS EN LA INSERCION A LA DB
+        $titulo = $this->conexion->real_escape_string($titulo);
+        $texto = $this->conexion->real_escape_string($texto);
+
+        $query = "INSERT INTO Publicacion (id_publicacion, titulo, fecha_creacion, ruta_recurso_media, texto,
+                                            origen_publicacion, tipo_recurso_media, id_perfil) 
+                  VALUES ('$id_publicacion', '$titulo', '$fecha_creacion', '$ruta_recurso_media', '$texto', 
+                          '$origen_publicacion', '$tipo_recurso_media', '$id_perfil')";
+        $resultado = $this->conexion->query($query)/* or print_r($this->conexion->error . " No se pudo insertar correctamente")*/;
         if (!$resultado) {return false;}
         return true;
     }

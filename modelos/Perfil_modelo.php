@@ -94,4 +94,16 @@ class Perfil_modelo
 
         return true;
     }
+
+    /*Busca los perfiles que contengan un determinado string en su nombre en la DB*/
+    public function buscar_perfiles($expresion)
+    {
+        $query = "SELECT * FROM Perfil WHERE nombre_perfil LIKE '%$expresion%'";
+        $resultado = $this->conexion->query($query);
+
+        if ($resultado->num_rows<=0){return false;}
+
+        $perfiles = $resultado->fetch_all(MYSQLI_ASSOC);
+        return $perfiles;
+    }
 }

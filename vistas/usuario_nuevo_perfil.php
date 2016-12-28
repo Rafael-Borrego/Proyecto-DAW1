@@ -1,6 +1,14 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ControlWeb.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
+
+function pretty_print($elemento = false)
+{
+    echo "\n<pre style=\"background: #FFFF99; font-size: 10px;\">\n";
+    $elemento = print_r($elemento, true);
+    echo $elemento . "\n</pre>\n";
+}
 
 /*SE COMPRUEBA SI EL USUARIO ESTÁ LOGUEADO, SI NO LO ESTÁ, SE REDIRECCIONA AL INDEX.PHP*/
 $control_web = new ControlWeb();
@@ -13,39 +21,18 @@ $control_web->redireccionar_a("../index.php");
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
 $titulo_vista = "SEGUIR NUEVO PERFIL";
-//DATOS DE PRUEBA
-$array_perfiles = [
-[
-"nombre_perfil" => "leomessi",
-"imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-"descripcion_perfil" => "Descripción del perfil de leo messi",
-],
-[
-"nombre_perfil" => "leomessi",
-"imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-"descripcion_perfil" => "Descripción del perfil de leo messi",
-],
-[
-"nombre_perfil" => "leomessi",
-"imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-"descripcion_perfil" => "Descripción del perfil de leo messi",
-],
-[
-"nombre_perfil" => "leomessi",
-"imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-"descripcion_perfil" => "Descripción del perfil de leo messi",
-],
-[
-"nombre_perfil" => "leomessi",
-"imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-"descripcion_perfil" => "Descripción del perfil de leo messi",
-],
-[
-"nombre_perfil" => "leomessi",
-"imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-"descripcion_perfil" => "Descripción del perfil de leo messi",
-],
-];
+
+$modelo_perfiles = new Perfil_modelo();
+$hay_resultados = false;
+
+/*SI SE HIZO UNA BÚSQUEDA (VIENE EL PARÁMETRO SUBMITTED EN LA PETICIÓN GET)*/
+if (isset($_GET["submitted"]) && isset($_GET["expresion"]) && $_GET["expresion"]!=''){
+    $hay_resultados = true;
+    $perfiles_encontrados = $modelo_perfiles->buscar_perfiles($_GET["expresion"]);
+}else {
+    $perfiles_encontrados = "NINGÚN RESULTADO COINCIDENTE";
+}
+
 ?>
 
 
@@ -89,15 +76,19 @@ $array_perfiles = [
 
                         <!--ICONO USUARIO-LOGOUT-->
                         <?php include("../piezas/icono_usuario_logout.php"); ?>
-                        
-                        <div class="col-md-3">
-                            <input class="awesomplete"
-                                data-list="Messi, Neymar, Piqué, Suárez, Iniesta,
-                                            Messi10, Mess, Me" />
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#"><i class="glyphicon glyphicon-search"></i></a>
-                        </div>
+
+                        <form action="usuario_nuevo_perfil.php">
+                            <input type="hidden" name="submitted" value="1">
+                            <input type="text" name="expresion">
+                            <input type="submit" value="Buscar"><br><br>
+                        </form>
+
+                            <?php
+                                if ($hay_resultados)
+                                {
+                                    pretty_print($perfiles_encontrados);
+                                }
+                            ?>
       
                     </div><!--COLUMNA PRINCIPAL BOOTSTRAP-->
                 </div><!--FILA PRINCIPAL BOOTSTRAP-->
