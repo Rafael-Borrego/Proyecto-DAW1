@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/sql/creacion_tablas.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/eliminar_database.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/inserciones_tablas.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/1_eliminar_database.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/2_creacion_tablas.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/3_inserciones_tablas.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql/vaciar_Publicacion.sql" dialect="MySQL" />
   </component>
 </project>

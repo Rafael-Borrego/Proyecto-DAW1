@@ -51,6 +51,15 @@ class Publicacion_Modelo
         return $resultado;
     }
 
+    /*Devuelve un array asociativo con un conjunto las publicaciones de un perfil de la DB para paginación*/
+    public function get_publicaciones_perfil_pag($id_perfil, $filas_por_pagina, $offset)
+    {
+        $query = "SELECT * FROM Publicacion WHERE id_perfil='$id_perfil' ORDER BY fecha_creacion DESC LIMIT $filas_por_pagina OFFSET $offset";
+        $resultado = $this->conexion->query($query)->fetch_all(MYSQLI_ASSOC);
+
+        return $resultado;
+    }
+
     /*Inserta una publicación en la tabla Publicacion*/
     public function insertar_publicacion($id_publicacion, $titulo, $fecha_creacion, $ruta_recurso_media, $texto,
                                          $origen_publicacion, $tipo_recurso_media, $id_perfil)
