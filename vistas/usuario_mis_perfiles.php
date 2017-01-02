@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ControlWeb.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
 
 /*SE COMPRUEBA SI EL USUARIO ESTÁ LOGUEADO, SI NO LO ESTÁ, SE REDIRECCIONA AL INDEX.PHP*/
 $control_web = new ControlWeb();
@@ -12,9 +13,12 @@ if (!$control_web->esta_usuario_logueado()) {
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
+
+$modelo_perfiles = new Perfil_modelo();
 $titulo_vista = "MIS PERFILES";
 //DATOS DE PRUEBA
-$array_perfiles = [
+$array_perfiles = $modelo_perfiles->get_all_perfiles();
+/*$array_perfiles = [
     [
         "nombre_perfil" => "leomessi",
         "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
@@ -45,7 +49,7 @@ $array_perfiles = [
         "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
         "descripcion_perfil" => "Descripción del perfil de leo messi",
     ],
-];
+];*/
 ?>
 
 
@@ -92,7 +96,7 @@ $array_perfiles = [
                     <div class="clearfix">
 
                         <?php
-                        foreach (range(0, 5) as $indice) {
+                        foreach (range(0, ($modelo_perfiles->get_total_perfiles()-1)) as $indice) {
                             include("../piezas/columna_mis_perfiles.php");
                         }
                         ?>

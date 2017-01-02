@@ -13,6 +13,17 @@ class Perfil_modelo
         $this->conexion =  $database->conectar();
     }
 
+
+    /*Devuelve un el número total de perfiles en la tabla*/
+    public function get_total_perfiles()
+    {
+        $query = "SELECT COUNT(*) FROM Perfil";
+        $resultado = $this->conexion->query($query)->fetch_row()[0];
+
+        return $resultado;
+    }
+
+
     /*Devuelve un array asociativo con todos los perfiles de la DB*/
     public function get_all_perfiles()
     {
