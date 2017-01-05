@@ -31,6 +31,14 @@ class Publicacion_Modelo
         return $resultado;
     }
 
+    /*Devuelve el numero de publicaciones de un determinado perfil*/
+    public function get_num_publicaciones_perfil($id){
+        $query = "SELECT COUNT(*) FROM Publicacion WHERE id_perfil='$id'";
+        $resultado = $this->conexion->query($query)->fetch_row()[0];
+
+        return $resultado;
+    }
+
     /*Devuelve un array asociativo con todos las publicaciones de la DB ordenados por fecha de creación*/
     public function get_pag_publicaciones($filas_por_pagina, $offset)
     {

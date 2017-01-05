@@ -55,6 +55,21 @@ class Usuario_Modelo
         return $usuario;
     }
 
+    /*A partir de un nombre de usuario, devuelve un array asociativo con sus atributos*/
+    public function get_usuario_de_nombre($nombre_usuario)
+    {
+        $query = "SELECT * FROM Usuario WHERE nombre_usuario='$nombre_usuario'";
+
+        $resultado = $this->conexion->query($query);
+
+        if ($resultado->num_rows<=0){return false;}
+
+        $usuario = $resultado->fetch_assoc();
+        return $usuario;
+    }
+
+
+
     /*A partir de email y password de usuario, devuelve un array asociativo con sus atributos*/
     public function get_usuario_de_email_pass($email, $password)
     {
@@ -90,5 +105,33 @@ class Usuario_Modelo
         if (!$resultado) {return false;}
 
         return true;
+    }
+
+
+    /*Devuelve un array asociativo con los perfiles relacionados con un usuario*/
+    public function get_all_perfiles_usuario($id_usuario){
+        $query = "SELECT * FROM Usuario_Perfil WHERE id_usuario=$id_usuario";
+
+        $resultado = $this->conexion->query($query);
+
+        if ($resultado->num_rows<=0){return false;}
+
+        $array_id_perfiles = $resultado->fetch_all(MYSQLI_ASSOC);
+
+        $array_perfiles = array();
+
+        foreach ($array_id_perfiles as $elemento){
+            $id_elemento = $elemento["id_perfil"];
+            $query = "SELECT * FROM Perfil WHERE id_perfil='$id_elemento'";
+
+            $resultado = $this->conexion->query($query);
+
+            if ($resultado->num_rows<=0){return false;}
+
+            $array_perfiles[] = $resultado->fetch_all(MYSQLI_ASSOC)[0];
+        }
+
+
+        return $array_perfiles;
     }
 }

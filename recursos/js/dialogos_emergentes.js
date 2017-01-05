@@ -9,7 +9,7 @@ function confirmar_añadir(url_redireccion) {
         type: "info",
         showCancelButton: true,
         closeOnConfirm: false,
-        confirmButtonText: "Si!",
+        confirmButtonText: "Sí!",
         confirmButtonColor: "#7aec69",
     },function() {
         window.location.href = url_redireccion;

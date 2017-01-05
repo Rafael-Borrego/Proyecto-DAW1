@@ -76,14 +76,12 @@ $modelo_perfiles = new Perfil_modelo();
                     <!--ICONO USUARIO-LOGOUT-->
                     <?php include("../piezas/icono_usuario_logout.php"); ?>
 
-                    <button class="mostrar_dialogo">Mostrar diálogo</button>
-
                     <!--CONTENIDO VISTA-->
                     <?php
                     foreach ($nombres_categorias as $nombre_categoria){
                         $array_perfiles_populares = $modelo_perfiles->get_perfiles_categoria($nombre_categoria, 3);
                         //pretty_print($array_perfiles_populares);
-                        include("../piezas/fila_categoría_populares.php");
+                        include($_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/piezas/fila_categoría_populares.php");
                     }
                     ?>
 

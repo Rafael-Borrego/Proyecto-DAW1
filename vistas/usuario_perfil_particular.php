@@ -28,7 +28,7 @@ $modelo_publicaciones = new Publicacion_Modelo();
 /*CONFIGURACIÓN DE LA PAGINACIÓN*/
 
 /*CÁLCULO DE PARÁMETROS NECESARIOS PARA LA PAGINACIÓN*/
-$num_filas_total = $modelo_publicaciones->get_total_publicaciones();
+$num_filas_total = $modelo_publicaciones->get_num_publicaciones_perfil($perfil["id_perfil"]);
 $filas_por_pagina = 4;
 $num_paginas = ceil($num_filas_total / $filas_por_pagina);
 $pagina_actual = min($num_paginas, filter_input(INPUT_GET, 'pagina', FILTER_VALIDATE_INT, array(

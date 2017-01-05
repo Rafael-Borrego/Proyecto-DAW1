@@ -2,6 +2,14 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ControlWeb.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Usuario_modelo.php";
+
+function pretty_print($var = false)
+{
+    echo "\n<pre style=\"background: #FFFF99; font-size: 10px;\">\n";
+    $var = print_r($var, true);
+    echo $var . "\n</pre>\n";
+}
 
 /*SE COMPRUEBA SI EL USUARIO ESTÁ LOGUEADO, SI NO LO ESTÁ, SE REDIRECCIONA AL INDEX.PHP*/
 $control_web = new ControlWeb();
@@ -13,43 +21,16 @@ if (!$control_web->esta_usuario_logueado()) {
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
+$modelo_usuarios = new Usuario_Modelo();
+$usuario = $modelo_usuarios->get_usuario_de_nombre($nombre_usuario_logueado);
+
 
 $modelo_perfiles = new Perfil_modelo();
 $titulo_vista = "MIS PERFILES";
-//DATOS DE PRUEBA
-$array_perfiles = $modelo_perfiles->get_all_perfiles();
-/*$array_perfiles = [
-    [
-        "nombre_perfil" => "leomessi",
-        "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-        "descripcion_perfil" => "Descripción del perfil de leo messi",
-    ],
-    [
-        "nombre_perfil" => "leomessi",
-        "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-        "descripcion_perfil" => "Descripción del perfil de leo messi",
-    ],
-    [
-        "nombre_perfil" => "leomessi",
-        "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-        "descripcion_perfil" => "Descripción del perfil de leo messi",
-    ],
-    [
-        "nombre_perfil" => "leomessi",
-        "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-        "descripcion_perfil" => "Descripción del perfil de leo messi",
-    ],
-    [
-        "nombre_perfil" => "leomessi",
-        "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-        "descripcion_perfil" => "Descripción del perfil de leo messi",
-    ],
-    [
-        "nombre_perfil" => "leomessi",
-        "imagen_perfil" => "../recursos/imagenes/messi_700.gif",
-        "descripcion_perfil" => "Descripción del perfil de leo messi",
-    ],
-];*/
+
+
+//$array_perfiles = $modelo_perfiles->get_all_perfiles();
+$array_perfiles = $modelo_usuarios->get_all_perfiles_usuario($usuario["id_usuario"]);
 ?>
 
 
@@ -96,7 +77,9 @@ $array_perfiles = $modelo_perfiles->get_all_perfiles();
                     <div class="clearfix">
 
                         <?php
-                        foreach (range(0, ($modelo_perfiles->get_total_perfiles()-1)) as $indice) {
+                        //pretty_print($usuario);
+                        //pretty_print($array_perfiles);
+                        foreach (range(0, sizeof($array_perfiles)-1) as $indice) {
                             include("../piezas/columna_mis_perfiles.php");
                         }
                         ?>
