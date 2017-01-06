@@ -78,10 +78,12 @@ $modelo_perfiles = new Perfil_modelo();
 
                     <!--CONTENIDO VISTA-->
                     <?php
-                    foreach ($nombres_categorias as $nombre_categoria){
-                        $array_perfiles_populares = $modelo_perfiles->get_perfiles_categoria($nombre_categoria, 3);
-                        //pretty_print($array_perfiles_populares);
-                        include($_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/piezas/fila_categoría_populares.php");
+                    if (sizeof($nombres_categorias)!=0) {
+                        foreach ($nombres_categorias as $nombre_categoria) {
+                            $array_perfiles_populares = $modelo_perfiles->get_perfiles_categoria($nombre_categoria, 3);
+                            //pretty_print($array_perfiles_populares);
+                            include($_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/piezas/fila_categoría_populares.php");
+                        }
                     }
                     ?>
 

@@ -24,12 +24,24 @@ $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 $modelo_usuarios = new Usuario_Modelo();
 $usuario = $modelo_usuarios->get_usuario_de_nombre($nombre_usuario_logueado);
 
+/*CASO QUE HAYA QUE AÑADIR UN PERFIL A LA LISTA DE SEGUIDOS*/
+if (isset($_GET["add_perfil"])){
+    if (isset($_GET["id_perfil"])){
+        $modelo_usuarios->add_perfil_a_seguidos($usuario[id_usuario],$_GET["id_perfil"]);
+    }
+}
+
+/*CASO QUE HAYA QUE QUITAR UN PERFIL DE LA LISTA DE SEGUIDOS*/
+if (isset($_GET["del_perfil"])){
+    if (isset($_GET["id_perfil"])){
+        $modelo_usuarios->quitar_perfil_de_seguidos($usuario[id_usuario],$_GET["id_perfil"]);
+    }
+}
 
 $modelo_perfiles = new Perfil_modelo();
 $titulo_vista = "MIS PERFILES";
 
 
-//$array_perfiles = $modelo_perfiles->get_all_perfiles();
 $array_perfiles = $modelo_usuarios->get_all_perfiles_usuario($usuario["id_usuario"]);
 ?>
 
@@ -79,9 +91,11 @@ $array_perfiles = $modelo_usuarios->get_all_perfiles_usuario($usuario["id_usuari
                         <?php
                         //pretty_print($usuario);
                         //pretty_print($array_perfiles);
-                        foreach (range(0, sizeof($array_perfiles)-1) as $indice) {
-                            include("../piezas/columna_mis_perfiles.php");
-                        }
+                        if (sizeof($array_perfiles)>=1) {
+                            foreach (range(0, sizeof($array_perfiles) - 1) as $indice) {
+                                include("../piezas/columna_mis_perfiles.php");
+                            }
+                        }else {print_r("<p>NO ESTÁS SIGUIENDO NINGÚN PERFIL</p>");}
                         ?>
                     </div><!--CONTENIDO VISTA-->
 

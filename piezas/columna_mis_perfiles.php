@@ -11,4 +11,5 @@
             </figcaption>
         </figure>
     </a>
+    <a class="btn btn-danger" href="usuario_mis_perfiles.php?del_perfil=1&id_perfil=<?=$array_perfiles[$indice]["id_perfil"]?>">Dejar de seguir</a>
 </div><!--COLUMNA PERFIL MIS PERFILES-->

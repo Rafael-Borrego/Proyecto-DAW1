@@ -23,4 +23,10 @@ $usuario_modelo = new Usuario_Modelo();
     print_r("<br>NO EXISTE ESA RELACIÓN");
 }*/
 
+//AÑADIR A LISTA DE SEGUIDOS
+//$usuario_modelo->add_perfil_a_seguidos(1,"20740995");
+
+//ElIMINAR DE LA LISTA DE SEGUIDOS
+//$usuario_modelo->quitar_perfil_de_seguidos(1,"20740995");
+
 pretty_print($usuario_modelo->get_all_perfiles_usuario(1));

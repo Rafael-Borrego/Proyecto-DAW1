@@ -41,4 +41,15 @@ class UsuarioPerfil_modelo
         return true;
     }
 
+    /*Elimina una fila de relación usuario-perfil en la tabla Usuario_Perfil*/
+    public function eliminar_usuario_perfil($id_usuario, $id_perfil){
+        $query = "DELETE FROM Usuario_Perfil WHERE id_usuario=$id_usuario AND id_perfil='$id_perfil'";
+
+        $resultado = $this->conexion->query($query);
+
+        if (!resultado) {return false;}
+        else return true;
+
+    }
+
 }//FIN CLASE

@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/proyecto_daw1/database/Database.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/UsuarioPerfil_modelo.php";
 
 class Usuario_Modelo
 {
@@ -134,4 +135,20 @@ class Usuario_Modelo
 
         return $array_perfiles;
     }
+
+    /*Añade un perfil a la lista de seguidos de un usuario*/
+    public function add_perfil_a_seguidos($id_usuario, $id_perfil){
+        $usuario_perfil_modelo = new UsuarioPerfil_modelo();
+        if (!$usuario_perfil_modelo->insertar_usuario_perfil($id_usuario, $id_perfil)) {return false;}
+        else {return true;}
+    }
+
+
+    /*Quita un perfil de la lista de seguidos de un usuario*/
+    public function quitar_perfil_de_seguidos($id_usuario, $id_perfil){
+        $usuario_perfil_modelo = new UsuarioPerfil_modelo();
+        if (!$usuario_perfil_modelo->eliminar_usuario_perfil($id_usuario, $id_perfil)){return false;}
+        else {return true;}
+    }
+
 }
