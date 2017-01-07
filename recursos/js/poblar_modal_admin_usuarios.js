@@ -1,0 +1,20 @@
+$(document).on("click", ".abrir_modal_actualizar", function () {
+    var id_usuario = $(this).data('id_usuario');
+    var email = $(this).data('email');
+    var contrasena = $(this).data('contrasena');
+    var tipo_usuario = $(this).data('tipo_usuario');
+    var nombre_usuario = $(this).data('nombre_usuario');
+    var nombre_completo = $(this).data('nombre_completo');
+    var sexo = $(this).data('sexo');
+    var descripcion = $(this).data('descripcion');
+    var aficiones = $(this).data('aficiones');
+    $(".modal-id_usuario").val(id_usuario);
+    $(".modal-email").val(email);
+    $(".modal-contrasena").val(contrasena);
+    $(".modal-tipo_usuario").val(tipo_usuario);
+    $(".modal-nombre_usuario").val(nombre_usuario);
+    $(".modal-nombre_completo").val(nombre_completo);
+    $(".modal-sexo").val(sexo);
+    $(".modal-descripcion").val(descripcion);
+    $(".modal-aficiones").val(aficiones);
+});

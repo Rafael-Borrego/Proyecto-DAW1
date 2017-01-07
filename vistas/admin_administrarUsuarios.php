@@ -1,7 +1,6 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ControlWeb.php";
-require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Usuario_modelo.php";
 
 
@@ -15,30 +14,36 @@ if (!$control_web->esta_usuario_logueado()) {
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
-$modelo_perfiles = new Perfil_modelo();
+$modelo_usuarios = new Usuario_Modelo();
 
-/*Caso en que haya que eliminar un perfil*/
-if (isset($_GET["del_perfil"])) {
-    if (isset($_GET["id_perfil"])) {
-        $modelo_perfiles->eliminar_perfil($_GET["id_perfil"]);
+/*Caso en que haya que eliminar un usuario*/
+if (isset($_GET["del_usuario"])) {
+    if (isset($_GET["id_usuario"])) {
+        $modelo_usuarios->eliminar_usuario($_GET["id_usuario"]);
+    }
+    /*Caso en que se quiera eliminar el usuario logueado*/
+    if ($_GET["id_usuario"]==$_SESSION["usuario_logueado"]["id_usuario"]){
+        $control_web->logout();
+        $control_web->redireccionar_a("../index.php");
     }
 }
 
-/*Caso en que haya que actualizar un perfil*/
+/*Caso en que haya que actualizar un usuario*/
 if (isset($_POST["submitted_actualizar"])) {
-    $modelo_perfiles->actualizar_perfil($_POST["id_perfil"], $_POST["nombre_perfil"],
-        $_POST["descripcion"], $_POST["url_imagen"],
-        $_POST["num_seguidores"], $_POST["num_publicaciones"],
-        $_POST["categoria"]);
+    $modelo_usuarios->actualizar_usuario($_POST["id_usuario"], $_POST["email"],
+        $_POST["contrasena"], $_POST["tipo_usuario"],
+        $_POST["nombre_usuario"], $_POST["nombre_completo"],
+        $_POST["sexo"], $_POST["descripcion"]);
 }
 
-$titulo_vista = "ADMINISTRAR PERFILES";
+$titulo_vista = "ADMINISTRAR USUARIOS";
+
 
 /*CONFIGURACIÓN DE LA PAGINACIÓN*/
 
 /*CÁLCULO DE PARÁMETROS NECESARIOS PARA LA PAGINACIÓN*/
-$num_filas_total = $modelo_perfiles->get_total_perfiles();
-$filas_por_pagina = 5;
+$num_filas_total = $modelo_usuarios->get_total_usuarios();
+$filas_por_pagina = 1;
 $num_paginas = ceil($num_filas_total / $filas_por_pagina);
 $pagina_actual = min($num_paginas, filter_input(INPUT_GET, 'pagina', FILTER_VALIDATE_INT, array(
     'options' => array(
@@ -59,7 +64,7 @@ $link_siguiente = ($pagina_actual < $num_paginas) ? '<a href="?pagina=' . ($pagi
     '" title="Última página">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> 
                         <span class="disabled">&raquo;</span>';
 
-$array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_query);
+$array_usuarios = $modelo_usuarios->get_pag_usuarios($filas_por_pagina,$offset_query);
 ?>
 
 
@@ -71,7 +76,7 @@ $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_q
     <!-- Bootstrap CSS-->
     <link href="../recursos/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS Propio -->
-    <link href="../recursos/css/admin_administrarPerfiles.css" rel="stylesheet">
+    <link href="../recursos/css/admin_administrarUsuarios.css" rel="stylesheet">
 </head>
 
 <body>
@@ -99,23 +104,23 @@ $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_q
                     </a>
                 </div>
                 <div class="col-md-11">
-                    <h1>Datos Perfiles</h1>
+                    <h1>Datos Usuarios</h1>
                     <div class="table-responsive">
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <tr>
-                                <th>id_perfil</th>
-                                <th>nombre_perfil</th>
-                                <th>descripción</th>
-                                <th>categoria</th>
-                                <th>Editar</th>
-                                <th>Borrar</th>
+                                <th>email</th>
+                                <th>contrasena</th>
+                                <th>tipo_usuario</th>
+                                <th>nombre_usuario</th>
+                                <th>nombre_completo</th>
+                                <th>sexo</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                            foreach ($array_perfiles as $perfil) {
-                                include("../piezas/fila_tabla_admin_perfiles.php");
+                            foreach ($array_usuarios as $usuario) {
+                                include("../piezas/fila_tabla_admin_usuarios.php");
                             }
                             ?>
                             </tbody>
@@ -128,8 +133,8 @@ $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_q
             </div><!--fila principal-->
         </div><!--container principal-->
 
-        <!--DIÁLOGO EMERGENTE PARA ACTUALIZAR PERFIL-->
-        <?php include("../piezas/modal_dialog_admin_perfiles.php"); ?>
+        <!--DIÁLOGO EMERGENTE PARA ACTUALIZAR USUARIO-->
+        <?php include("../piezas/modal_dialog_admin_usuarios.php"); ?>
 
     </div><!--ENVOLTORIO CONTENIDO PÁGINA-->
 </div><!--ENVOLTORIO GENERAL-->
@@ -141,8 +146,8 @@ $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_q
 <script src="../recursos/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <!--JS Propio (necesita jQuery)-->
 <script src="../recursos/js/admin_usuario.js"></script>
-<!--Script para poblar el formulario con los datos del perfil-->
-<script src="../recursos/js/poblar_modal_admin_perfiles.js"></script>
+<!--Script para poblar el formulario con los datos del usuario-->
+<script src="../recursos/js/poblar_modal_admin_usuarios.js"></script>
 
 
 </body>

@@ -14,6 +14,15 @@ class Usuario_Modelo
         $this->conexion =  $database->conectar();
     }
 
+    /*Devuelve un el número total de usuarios en la tabla*/
+    public function get_total_usuarios()
+    {
+        $query = "SELECT COUNT(*) FROM Usuario";
+        $resultado = $this->conexion->query($query)->fetch_row()[0];
+
+        return $resultado;
+    }
+
     /*Devuelve un array asociativo con todos los usuarios de la DB*/
     public function get_array_usuarios()
     {
@@ -106,6 +115,17 @@ class Usuario_Modelo
         if (!$resultado) {return false;}
 
         return true;
+    }
+
+
+    /*Elimina un usuario de la tabla Usuario*/
+    public function eliminar_usuario($id_usuario){
+        $query = "DELETE FROM Usuario WHERE id_usuario='$id_usuario'";
+
+        $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo eliminar correctamente")*/;
+
+        if (!resultado) {return false;}
+        else {return true;}
     }
 
 
