@@ -4,7 +4,7 @@
         <li class="sidebar-brand"><a href="admin_administrarPerfiles.php">YOUTWINS</a></li>
         <li><a href="admin_administrarPerfiles.php">ADMINISTRAR PERFILES</a></li>
         <li><a href="admin_administrarUsuarios.php">ADMINISTRAR USUARIOS</a></li>
-        <li><a href="usuario_nuevo_perfil.php">AÑADIR PERFIL</a></li>
-        <li><a href="usuario_configuracion.php">CONFIGURACIÓN</a></li>
+        <li><a href="">AÑADIR PERFIL</a></li>
+        <li><a href="admin_configuracion.php">MI CONFIGURACIÓN</a></li>
     </ul>
 </nav><!--MENÚ LATERAL ADMIN-->

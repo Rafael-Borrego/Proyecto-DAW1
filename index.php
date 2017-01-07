@@ -32,7 +32,7 @@ if(isset($_POST['submitted_login']))
     else
     {
         if ($_SESSION["usuario_logueado"]["tipo_usuario"]=="administrador"){
-            $control_web->redireccionar_a("vistas/usuario_populares.php");
+            $control_web->redireccionar_a("vistas/admin_administrarPerfiles.php");
         }else{
             $control_web->redireccionar_a("vistas/usuario_populares.php");
         }
