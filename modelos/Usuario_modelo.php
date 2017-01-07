@@ -136,6 +136,7 @@ class Usuario_Modelo
         return $array_perfiles;
     }
 
+
     /*Añade un perfil a la lista de seguidos de un usuario*/
     public function add_perfil_a_seguidos($id_usuario, $id_perfil){
         $usuario_perfil_modelo = new UsuarioPerfil_modelo();

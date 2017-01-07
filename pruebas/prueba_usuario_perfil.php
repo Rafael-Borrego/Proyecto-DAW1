@@ -2,6 +2,7 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/UsuarioPerfil_modelo.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Usuario_modelo.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
 
 function pretty_print($var = false)
 {
@@ -10,8 +11,11 @@ function pretty_print($var = false)
     echo $var . "\n</pre>\n";
 }
 
-$usu_per_modelo = new UsuarioPerfil_modelo();
-$usuario_modelo = new Usuario_Modelo();
+//$usu_per_modelo = new UsuarioPerfil_modelo();
+//$usuario_modelo = new Usuario_Modelo();
+$perfil_modelo = new Perfil_modelo();
+
+//$perfil_modelo->eliminar_perfil("1146885610");
 
 //INSERCIÓN
 /*if (!$usu_per_modelo->insertar_usuario_perfil(1,"1756749631")){
@@ -29,4 +33,6 @@ $usuario_modelo = new Usuario_Modelo();
 //ElIMINAR DE LA LISTA DE SEGUIDOS
 //$usuario_modelo->quitar_perfil_de_seguidos(1,"20740995");
 
-pretty_print($usuario_modelo->get_all_perfiles_usuario(1));
+//pretty_print($usuario_modelo->get_all_perfiles_usuario(1));
+
+//ACTUALIZAR PERFIL

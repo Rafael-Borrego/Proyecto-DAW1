@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `daw1_database`.`Publicacion` (
   CONSTRAINT `fk_Publicacion_Perfil1`
     FOREIGN KEY (`id_perfil`)
     REFERENCES `daw1_database`.`Perfil` (`id_perfil`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 

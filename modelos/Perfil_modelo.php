@@ -97,14 +97,25 @@ class Perfil_modelo
     public function actualizar_perfil($id_perfil, $nombre_perfil, $descripcion, $url_imagen, $num_seguidores,
                                       $num_publicaciones, $categoria)
     {
-        $query = "UPDATE Usuario 
+        $query = "UPDATE Perfil 
                   SET id_perfil='$id_perfil', nombre_perfil='$nombre_perfil', descripcion='$descripcion', url_imagen='$url_imagen',
                       num_seguidores='$num_seguidores', num_publicaciones='$num_publicaciones', categoria='$categoria'
                   WHERE id_perfil='$id_perfil'";
-        $resultado = $this->conexion->query($query);// or die ($this->conexion->error . " No se pudo actualizar correctamente");;
+        $resultado = $this->conexion->query($query) or die ($this->conexion->error . " No se pudo actualizar correctamente");
         if (!$resultado) {return false;}
 
         return true;
+    }
+
+
+    /*Elimina un perfil de la tabla Perfil*/
+    public function eliminar_perfil($id_perfil){
+        $query = "DELETE FROM Perfil WHERE id_perfil='$id_perfil'";
+
+        $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo eliminar correctamente")*/;
+
+        if (!resultado) {return false;}
+        else {return true;}
     }
 
     /*Busca los perfiles que contengan un determinado string en su nombre en la DB*/
