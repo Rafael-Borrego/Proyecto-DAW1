@@ -60,10 +60,10 @@ $link_siguiente = ($pagina_actual < $num_paginas) ? '<a href="?pagina=' . ($pagi
                         <span class="disabled">&raquo;</span>';
 
 /*Caso en que no haya perfiles en la DB*/
-if ($num_filas_total==0){
+if ($num_filas_total == 0) {
     $array_perfiles = array();
-}else {
-    $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_query);
+} else {
+    $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina, $offset_query);
 }
 ?>
 
@@ -104,30 +104,37 @@ if ($num_filas_total==0){
                 </div>
                 <div class="col-md-11">
                     <h1>Datos Perfiles</h1>
-                    <div class="table-responsive">
-                        <table id="mytable" class="table table-bordred table-striped">
-                            <thead>
-                            <tr>
-                                <th>id_perfil</th>
-                                <th>nombre_perfil</th>
-                                <th>descripción</th>
-                                <th>categoria</th>
-                                <th>Editar</th>
-                                <th>Borrar</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            foreach ($array_perfiles as $perfil) {
-                                include("../piezas/fila_tabla_admin_perfiles.php");
-                            }
-                            ?>
-                            </tbody>
-                        </table>
-                    </div><!--table-responsive-->
-                    <?='<div id="paginador"><p>', $link_anterior, ' Página ', $pagina_actual, ' de ',
-                            $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
-                            ' resultados ', $link_siguiente, ' </p></div>';?>
+                    <?php if ($modelo_perfiles->get_total_perfiles() == 0) {
+                        print_r("<h4>No hay perfiles en el sistema</h4>");
+                    } else {
+                        ?>
+                        <div class="table-responsive">
+                            <table id="mytable" class="table table-bordred table-striped">
+                                <thead>
+                                <tr>
+                                    <th>id_perfil</th>
+                                    <th>nombre_perfil</th>
+                                    <th>descripción</th>
+                                    <th>categoria</th>
+                                    <th>Editar</th>
+                                    <th>Borrar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($array_perfiles as $perfil) {
+                                    include("../piezas/fila_tabla_admin_perfiles.php");
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                            <br>
+                            <br>
+                        </div><!--table-responsive-->
+                        <?= '<div id="paginador"><p>', $link_anterior, ' Página ', $pagina_actual, ' de ',
+                        $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
+                        ' resultados ', $link_siguiente, ' </p></div>'; ?>
+                    <?php } ?>
                 </div><!--columna principal-->
             </div><!--fila principal-->
         </div><!--container principal-->

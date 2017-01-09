@@ -4,12 +4,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ControlWeb.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Usuario_modelo.php";
 
-function pretty_print($var = false)
-{
-    echo "\n<pre style=\"background: #FFFF99; font-size: 10px;\">\n";
-    $var = print_r($var, true);
-    echo $var . "\n</pre>\n";
-}
 
 /*SE COMPRUEBA SI EL USUARIO ESTÁ LOGUEADO, SI NO LO ESTÁ, SE REDIRECCIONA AL INDEX.PHP*/
 $control_web = new ControlWeb();
@@ -20,21 +14,20 @@ if (!$control_web->esta_usuario_logueado()) {
 
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
-
 $modelo_usuarios = new Usuario_Modelo();
 $usuario = $modelo_usuarios->get_usuario_de_nombre($nombre_usuario_logueado);
 
 /*CASO QUE HAYA QUE AÑADIR UN PERFIL A LA LISTA DE SEGUIDOS*/
-if (isset($_GET["add_perfil"])){
-    if (isset($_GET["id_perfil"])){
-        $modelo_usuarios->add_perfil_a_seguidos($usuario[id_usuario],$_GET["id_perfil"]);
+if (isset($_GET["add_perfil"])) {
+    if (isset($_GET["id_perfil"])) {
+        $modelo_usuarios->add_perfil_a_seguidos($usuario[id_usuario], $_GET["id_perfil"]);
     }
 }
 
 /*CASO QUE HAYA QUE QUITAR UN PERFIL DE LA LISTA DE SEGUIDOS*/
-if (isset($_GET["del_perfil"])){
-    if (isset($_GET["id_perfil"])){
-        $modelo_usuarios->quitar_perfil_de_seguidos($usuario[id_usuario],$_GET["id_perfil"]);
+if (isset($_GET["del_perfil"])) {
+    if (isset($_GET["id_perfil"])) {
+        $modelo_usuarios->quitar_perfil_de_seguidos($usuario[id_usuario], $_GET["id_perfil"]);
     }
 }
 
@@ -89,13 +82,14 @@ $array_perfiles = $modelo_usuarios->get_all_perfiles_usuario($usuario["id_usuari
                     <div class="clearfix">
 
                         <?php
-                        //pretty_print($usuario);
-                        //pretty_print($array_perfiles);
-                        if (sizeof($array_perfiles)>=1) {
+                        //Si hay algún perfil en la lista de seguidos del usuario
+                        if (!empty($array_perfiles)) {
                             foreach (range(0, sizeof($array_perfiles) - 1) as $indice) {
                                 include("../piezas/columna_mis_perfiles.php");
                             }
-                        }else {print_r("<p>NO ESTÁS SIGUIENDO NINGÚN PERFIL</p>");}
+                        } else {
+                            print_r("<h4>NO ESTÁS SIGUIENDO NINGÚN PERFIL</h4>");
+                        }
                         ?>
                     </div><!--CONTENIDO VISTA-->
 

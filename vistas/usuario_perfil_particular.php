@@ -13,12 +13,11 @@ if (!$control_web->esta_usuario_logueado()) {
 
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
-
 $modelo_perfiles = new Perfil_modelo();
 $perfil = $modelo_perfiles->get_perfil_de_nombre($_GET["nombre_perfil"]);
 
 /*SE COMPRUEBA SI EL PARÁMETRO GET CORRESPONDE A UN PERFIL VÁLIDO Y SE PUEBLA LA VISTA*/
-if (!$perfil){
+if (!$perfil) {
     $control_web->redireccionar_a("usuario_mis_perfiles.php");
 }
 
@@ -42,20 +41,20 @@ $inicio = $offset_query + 1;
 $final = min(($offset_query + $filas_por_pagina), $num_filas_total);
 
 /*DECLARACIÓN DE LOS LINKS DEL PAGINADOR*/
-$link_anterior = ($pagina_actual > 1) ? '<a href="?nombre_perfil='.$_GET["nombre_perfil"].
-                    '&pagina=1" title="Primera pagina">&laquo;</a> <a href="?nombre_perfil='.$_GET["nombre_perfil"].'&pagina='
-                    . ($pagina_actual - 1) . '" title="Página anterior">&lsaquo;</a>' : '<span class="disabled">&laquo;
+$link_anterior = ($pagina_actual > 1) ? '<a href="?nombre_perfil=' . $_GET["nombre_perfil"] .
+    '&pagina=1" title="Primera pagina">&laquo;</a> <a href="?nombre_perfil=' . $_GET["nombre_perfil"] . '&pagina='
+    . ($pagina_actual - 1) . '" title="Página anterior">&lsaquo;</a>' : '<span class="disabled">&laquo;
                     </span> <span class="disabled">&lsaquo;</span>';
 $link_siguiente = ($pagina_actual < $num_paginas) ? '<a href="?nombre_perfil='
-                    .$_GET["nombre_perfil"].'&pagina=' . ($pagina_actual + 1) .
-                    '" title="Pagina siguiente">&rsaquo;</a> <a href="?nombre_perfil='.$_GET["nombre_perfil"].'&pagina=' . $num_paginas .
-                    '" title="Última página">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> 
+    . $_GET["nombre_perfil"] . '&pagina=' . ($pagina_actual + 1) .
+    '" title="Pagina siguiente">&rsaquo;</a> <a href="?nombre_perfil=' . $_GET["nombre_perfil"] . '&pagina=' . $num_paginas .
+    '" title="Última página">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> 
                         <span class="disabled">&raquo;</span>';
 
 /*POBLACIÓN DE LA VISTA*/
-$publicaciones_perfil = $modelo_publicaciones->get_publicaciones_perfil_pag($perfil["id_perfil"],$filas_por_pagina, $offset_query);
+$publicaciones_perfil = $modelo_publicaciones->get_publicaciones_perfil_pag($perfil["id_perfil"], $filas_por_pagina, $offset_query);
 $array_publicaciones_vista = array();
-foreach ($publicaciones_perfil as $indice => $elemento){
+foreach ($publicaciones_perfil as $indice => $elemento) {
     $array_publicaciones_vista[$indice]["titulo_publicacion"] = $elemento["titulo"];
     $array_publicaciones_vista[$indice]["tipo_publicacion"] = $elemento["tipo_recurso_media"];
     $array_publicaciones_vista[$indice]["src_publicacion"] = $elemento["ruta_recurso_media"];
@@ -70,7 +69,7 @@ $array_perfiles = [
     "publicaciones" => $array_publicaciones_vista,
 ];
 
-$titulo_vista = "PERFIL DE ".$array_perfiles["nombre_perfil"];
+$titulo_vista = "PERFIL DE " . $array_perfiles["nombre_perfil"];
 ?>
 
 
@@ -120,12 +119,12 @@ $titulo_vista = "PERFIL DE ".$array_perfiles["nombre_perfil"];
 
                     <!--CONTENIDO VISTA-->
                     <?php
-                    foreach (range(0, sizeof($array_publicaciones_vista)-1) as $indice) {
+                    foreach (range(0, sizeof($array_publicaciones_vista) - 1) as $indice) {
                         include("../piezas/columna_perfil_particular.php");
                     }
                     echo '<div id="paginador"><p>', $link_anterior, ' Página ', $pagina_actual, ' de ',
-                            $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
-                            ' resultados ', $link_siguiente, ' </p></div>';
+                    $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
+                    ' resultados ', $link_siguiente, ' </p></div>';
                     ?>
 
 

@@ -43,7 +43,7 @@ $titulo_vista = "ADMINISTRAR USUARIOS";
 
 /*CÁLCULO DE PARÁMETROS NECESARIOS PARA LA PAGINACIÓN*/
 $num_filas_total = $modelo_usuarios->get_total_usuarios();
-$filas_por_pagina = 1;
+$filas_por_pagina = 5;
 $num_paginas = ceil($num_filas_total / $filas_por_pagina);
 $pagina_actual = min($num_paginas, filter_input(INPUT_GET, 'pagina', FILTER_VALIDATE_INT, array(
     'options' => array(
@@ -129,7 +129,6 @@ $array_usuarios = $modelo_usuarios->get_pag_usuarios($filas_por_pagina,$offset_q
                         <!--<button class="abrir_modal_crear btn btn-primary" data-toggle="modal"
                                 data-target="#crear">Crear Usuario
                         </button>-->
-                        <br>
                         <br>
                     </div><!--table-responsive-->
                     <?='<div id="paginador"><p>', $link_anterior, ' Página ', $pagina_actual, ' de ',

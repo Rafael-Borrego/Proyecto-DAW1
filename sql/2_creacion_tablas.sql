@@ -96,3 +96,10 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- ----------
+-- Creación de administrador root
+-- ----------
+
+INSERT INTO daw1_database.Usuario (email, contrasena, tipo_usuario, nombre_usuario, nombre_completo, sexo, descripcion)
+    VALUES ('root@root.com', 'root', 'administrador', 'root', 'root', 'hombre', 'root');

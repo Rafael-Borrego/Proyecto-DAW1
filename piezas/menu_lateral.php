@@ -6,5 +6,12 @@
         <li><a href="usuario_mis_perfiles.php">MIS PERFILES</a></li>
         <li><a href="usuario_nuevo_perfil.php">EXPLORAR</a></li>
         <li><a href="usuario_configuracion.php">CONFIGURACIÓN</a></li>
+        <?php if ($control_web->esta_usuario_logueado()) {
+            //Caso administrador
+            if ($_SESSION["usuario_logueado"]["tipo_usuario"] == "administrador") {
+                echo("<li><a href='admin_administrarPerfiles.php'>PANEL DE ADMINISTRADOR</a></li>");
+                //Caso usuario normal
+            }
+        }?>
     </ul>
 </nav><!--MENÚ LATERAL USUARIO NORMAL-->
