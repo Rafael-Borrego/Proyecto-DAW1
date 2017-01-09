@@ -6,7 +6,7 @@
                 <h3 class="modal-title">Editar Usuario</h3>
             </div>
 
-            <form class="form_actualizar" action="admin_administrarUsuarios.php" method="post">
+            <form class="form_actualizar" action="admin_administrarUsuarios.php" method="post" id="form_actualizar">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label class="control-label">Contraseña</label>
-                            <input type="text" class="modal-contrasena form-control"  required="required" name="contrasena">
+                            <input type="text" class="modal-contrasena form-control" required="required" name="contrasena">
                         </div>
                     </div>
                     <br>
@@ -70,7 +70,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cerrar</button>
-                    <button type="submit" value=" Send" class="btn btn-success" id="submit"><i class="glyphicon glyphicon-inbox"></i> Modificar</button>
+                    <button type="submit" value=" Send" class="btn btn-success" form="form_actualizar"><i class="glyphicon glyphicon-inbox"></i> Modificar</button>
                 </div>
         </div>
     </div>

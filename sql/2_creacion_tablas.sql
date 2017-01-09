@@ -11,7 +11,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema daw1_database
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `daw1_database` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `daw1_database` DEFAULT CHARACTER SET utf8mb4 ;
 USE `daw1_database` ;
 
 -- -----------------------------------------------------

@@ -35,7 +35,7 @@ class ScrapperInstagram
             $this->numero_publicaciones = $this->cuenta_instagram->mediaCount;
             $this->numero_seguidores = $this->cuenta_instagram->followedByCount;
             $this->numero_seguidos = $this->cuenta_instagram->followsCount;
-            $this->array_media = Instagram::getMedias($this->nombre_usuario, 30/*$this->numero_publicaciones*/);
+            $this->array_media = Instagram::getMedias($this->nombre_usuario, 5/*$this->numero_publicaciones*/);
         }
 
     }

@@ -84,11 +84,12 @@ class Perfil_modelo
     public function insertar_perfil($id_perfil, $nombre_perfil, $descripcion, $url_imagen, $num_seguidores,
                                      $num_publicaciones, $categoria)
     {
+        $descripcion= $this->conexion->real_escape_string($descripcion);
         $query = "INSERT INTO Perfil (id_perfil, nombre_perfil, descripcion, url_imagen, num_seguidores, 
                                       num_publicaciones, categoria) 
                   VALUES ('$id_perfil', '$nombre_perfil', '$descripcion', '$url_imagen', $num_seguidores,
-                          $num_publicaciones, '$categoria')";
-        $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo insertar correctamente")*/;
+                          '$num_publicaciones', '$categoria')";
+        $resultado = $this->conexion->query($query)/* or die($this->conexion->error . " No se pudo insertar correctamente")*/;
         if (!$resultado) {return false;}
         return true;
     }
@@ -97,6 +98,7 @@ class Perfil_modelo
     public function actualizar_perfil($id_perfil, $nombre_perfil, $descripcion, $url_imagen, $num_seguidores,
                                       $num_publicaciones, $categoria)
     {
+        $descripcion= $this->conexion->real_escape_string($descripcion);
         $query = "UPDATE Perfil 
                   SET id_perfil='$id_perfil', nombre_perfil='$nombre_perfil', descripcion='$descripcion', url_imagen='$url_imagen',
                       num_seguidores='$num_seguidores', num_publicaciones='$num_publicaciones', categoria='$categoria'

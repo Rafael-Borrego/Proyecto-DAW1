@@ -88,8 +88,6 @@ foreach ($lista_perfiles as $elemento){
         if (!$modelo_publicaciones->insertar_publicacion($publicacion["id_publicacion"], $publicacion["titulo"],
             $publicacion["fecha_creacion"], $publicacion["ruta_recurso_media"], $publicacion["texto"], $publicacion["origen_publicacion"],
             $publicacion["tipo_recurso_media"], $publicacion["id_perfil"])){
-
-        }else {
             print_r("  Fallo en la inserción de publicación de $scrapper->nombre_usuario "."(Posiblemente Repetido)<br/>");
         }
     }

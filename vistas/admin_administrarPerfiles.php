@@ -59,7 +59,12 @@ $link_siguiente = ($pagina_actual < $num_paginas) ? '<a href="?pagina=' . ($pagi
     '" title="Última página">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> 
                         <span class="disabled">&raquo;</span>';
 
-$array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_query);
+/*Caso en que no haya perfiles en la DB*/
+if ($num_filas_total==0){
+    $array_perfiles = array();
+}else {
+    $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_query);
+}
 ?>
 
 
@@ -77,7 +82,6 @@ $array_perfiles = $modelo_perfiles->get_pag_perfiles($filas_por_pagina,$offset_q
 <body>
 <!--ENVOLTORIO GENERAL-->
 <div id="wrapper">
-    <!--<div class="capa-transparencia"></div>-->
 
     <!--MENÚ LATERAL-->
     <?php include("../piezas/menu_lateral_admin.php"); ?>

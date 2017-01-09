@@ -125,6 +125,12 @@ $array_usuarios = $modelo_usuarios->get_pag_usuarios($filas_por_pagina,$offset_q
                             ?>
                             </tbody>
                         </table>
+                        <br>
+                        <!--<button class="abrir_modal_crear btn btn-primary" data-toggle="modal"
+                                data-target="#crear">Crear Usuario
+                        </button>-->
+                        <br>
+                        <br>
                     </div><!--table-responsive-->
                     <?='<div id="paginador"><p>', $link_anterior, ' Página ', $pagina_actual, ' de ',
                             $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
@@ -135,6 +141,8 @@ $array_usuarios = $modelo_usuarios->get_pag_usuarios($filas_por_pagina,$offset_q
 
         <!--DIÁLOGO EMERGENTE PARA ACTUALIZAR USUARIO-->
         <?php include("../piezas/modal_dialog_admin_usuarios.php"); ?>
+
+
 
     </div><!--ENVOLTORIO CONTENIDO PÁGINA-->
 </div><!--ENVOLTORIO GENERAL-->
