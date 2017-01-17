@@ -3,6 +3,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/vendor/autoload.php";
 use InstagramScraper\Instagram;
 use InstagramScraper\Model\Media;
+use Unirest\Request;
 
 date_default_timezone_set('Europe/Madrid');
 
@@ -25,6 +26,7 @@ class ScrapperInstagram
     /*---Constructor de la clase*/
     public function __construct($nombre_usuario=null)
     {
+        Request::verifyPeer(false);
         if ($nombre_usuario){
             $this->nombre_usuario = $nombre_usuario;
             $this->cuenta_instagram = Instagram::getAccount($this->nombre_usuario);
