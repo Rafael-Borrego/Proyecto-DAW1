@@ -80,7 +80,7 @@ class ScrapperInstagram
             //print_r("+++Descargando recurso " . date('Y-m-d H:i:s', $elemento->createdTime) . "
              //           <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTipo=> " . $elemento->type);
             if ($elemento->type == "video") {//CASO VÍDEO
-                $nombre_archivo = date('Y-m-d H:i:s', $elemento->createdTime) . ".mp4";
+                $nombre_archivo = date('Y-m-d_H-i-s', $elemento->createdTime) . ".mp4";
                 if (!file_exists($nombre_archivo)) {
                     copy($elemento->videoStandardResolutionUrl, $nombre_archivo);
                     print_r("<br/>");

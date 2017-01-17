@@ -20,14 +20,14 @@ $usuario = $modelo_usuarios->get_usuario_de_nombre($nombre_usuario_logueado);
 /*CASO QUE HAYA QUE AÑADIR UN PERFIL A LA LISTA DE SEGUIDOS*/
 if (isset($_GET["add_perfil"])) {
     if (isset($_GET["id_perfil"])) {
-        $modelo_usuarios->add_perfil_a_seguidos($usuario[id_usuario], $_GET["id_perfil"]);
+        $modelo_usuarios->add_perfil_a_seguidos($usuario["id_usuario"], $_GET["id_perfil"]);
     }
 }
 
 /*CASO QUE HAYA QUE QUITAR UN PERFIL DE LA LISTA DE SEGUIDOS*/
 if (isset($_GET["del_perfil"])) {
     if (isset($_GET["id_perfil"])) {
-        $modelo_usuarios->quitar_perfil_de_seguidos($usuario[id_usuario], $_GET["id_perfil"]);
+        $modelo_usuarios->quitar_perfil_de_seguidos($usuario["id_usuario"], $_GET["id_perfil"]);
     }
 }
 

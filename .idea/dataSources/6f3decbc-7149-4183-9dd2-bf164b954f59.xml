@@ -7,10 +7,8 @@
     </schema>
     <schema id="3" parent="1" name="mysql"/>
     <schema id="4" parent="1" name="performance_schema"/>
-    <schema id="5" parent="1" name="daw1_jsp_database">
-      <Current>1</Current>
-    </schema>
-    <schema id="6" parent="1" name="daw2_actividades"/>
+    <schema id="5" parent="1" name="phpmyadmin"/>
+    <schema id="6" parent="1" name="test"/>
     <schema id="7" parent="1" name="daw1_database">
       <Current>1</Current>
     </schema>

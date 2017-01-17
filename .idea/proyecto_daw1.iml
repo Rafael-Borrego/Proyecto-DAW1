@@ -3,10 +3,6 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/descargas_rrss" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/league/csv" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/mashape/unirest-php" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/raiym/instagram-php-scraper" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -27,22 +23,6 @@
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/composer.phar/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="PHP" type="php">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/league/csv" />
-          <root url="file://$MODULE_DIR$/vendor/mashape/unirest-php" />
-          <root url="file://$MODULE_DIR$/vendor/raiym/instagram-php-scraper" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/league/csv" />
-          <root url="file://$MODULE_DIR$/vendor/mashape/unirest-php" />
-          <root url="file://$MODULE_DIR$/vendor/raiym/instagram-php-scraper" />
         </SOURCES>
       </library>
     </orderEntry>

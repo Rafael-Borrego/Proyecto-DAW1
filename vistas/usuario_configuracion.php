@@ -57,8 +57,8 @@ $titulo_vista = "CONFIGURACIÓN USUARIO";
                         <?php include("../piezas/icono_usuario_logout.php"); ?>
 
                         <?php
-                            print_r("RESULTADO PETICIÓN POST => \n".$_POST);
-
+                            print_r("RESULTADO PETICIÓN POST => \n");
+                            print_r($_POST);
                         ?>
 
                         <!--FORMULARIO CONFIGURACIÓN USUARIO-->

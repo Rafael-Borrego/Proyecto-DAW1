@@ -29,7 +29,11 @@ $hay_resultados = false;
 if (isset($_GET["submitted"]) && isset($_GET["expresion"]) && $_GET["expresion"]!=''){
     $hay_resultados = true;
     $perfiles_encontrados = $modelo_perfiles->buscar_perfiles($_GET["expresion"]);
+    if (empty($perfiles_encontrados)){
+        $hay_resultados = false;
+    }
 }else {
+
     $perfiles_encontrados = "NINGÚN RESULTADO COINCIDENTE";
 }
 
@@ -86,6 +90,7 @@ if (isset($_GET["submitted"]) && isset($_GET["expresion"]) && $_GET["expresion"]
                             <?php
                                 if ($hay_resultados)
                                 {
+                                    print_r(sizeof($perfiles_encontrados));
                                     pretty_print($perfiles_encontrados);
                                 }
                             ?>

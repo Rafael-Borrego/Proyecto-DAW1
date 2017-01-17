@@ -45,7 +45,7 @@ class Perfil_modelo
     /*Devuelve un array asociativo con todos los perfiles de la DB para una categoría*/
     public function get_perfiles_categoria($categoria, $limite= false)
     {
-        if (limite) $query = "SELECT * FROM Perfil WHERE categoria='$categoria' ORDER BY num_seguidores DESC LIMIT $limite";
+        if ($limite) $query = "SELECT * FROM Perfil WHERE categoria='$categoria' ORDER BY num_seguidores DESC LIMIT $limite";
         else $query = "SELECT * FROM Perfil WHERE categoria='$categoria'";
         $resultado = $this->conexion->query($query)->fetch_all(MYSQLI_ASSOC);
 
@@ -116,7 +116,7 @@ class Perfil_modelo
 
         $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo eliminar correctamente")*/;
 
-        if (!resultado) {return false;}
+        if (!$resultado) {return false;}
         else {return true;}
     }
 
