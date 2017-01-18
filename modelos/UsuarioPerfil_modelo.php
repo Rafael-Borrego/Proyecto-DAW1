@@ -47,7 +47,7 @@ class UsuarioPerfil_modelo
 
         $resultado = $this->conexion->query($query);
 
-        if (!resultado) {return false;}
+        if (!$resultado) {return false;}
         else return true;
 
     }
