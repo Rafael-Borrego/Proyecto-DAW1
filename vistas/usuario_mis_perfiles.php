@@ -88,7 +88,7 @@ $array_perfiles = $modelo_usuarios->get_all_perfiles_usuario($usuario["id_usuari
                                 include("../piezas/columna_mis_perfiles.php");
                             }
                         } else {
-                            print_r("<h4>NO ESTÁS SIGUIENDO NINGÚN PERFIL</h4>");
+                            print_r("<h4>NO ESTÁS SIGUIENDO A NINGÚN PERFIL</h4>");
                         }
                         ?>
                     </div><!--CONTENIDO VISTA-->
