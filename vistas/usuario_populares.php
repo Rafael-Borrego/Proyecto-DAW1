@@ -1,21 +1,13 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/proyecto_daw1/clases/ControlWeb.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/clases/ControlWeb.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/modelos/Perfil_modelo.php";
 
-
-function pretty_print($var = false)
-{
-    echo "\n<pre style=\"background: #FFFF99; font-size: 10px;\">\n";
-    $var = print_r($var, true);
-    echo $var . "\n</pre>\n";
-}
 
 /*SE COMPRUEBA SI EL USUARIO ESTÁ LOGUEADO, SI NO LO ESTÁ, SE REDIRECCIONA AL INDEX.PHP*/
 $control_web = new ControlWeb();
 
-if (!$control_web->esta_usuario_logueado())
-{
+if (!$control_web->esta_usuario_logueado()) {
     $control_web->redireccionar_a("../index.php");
 }
 
@@ -26,20 +18,19 @@ $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 $titulo_vista = "PERFILES POPULARES";
 //ESTE ARRAY CAMBIARÁ DEPENDIENDO DE LAS AFICIONES DEL USUARIO
 $nombres_categorias = [
-        "deportes",
-        "musica",
+    "deportes",
+    "musica",
 ];
 $modelo_perfiles = new Perfil_modelo();
 
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php include("../piezas/metas_head.php"); ?>
-    <title><?= $titulo_vista?></title>
+    <title><?= $titulo_vista ?></title>
     <!-- Bootstrap CSS-->
     <link href="../recursos/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS Propio -->
@@ -78,11 +69,15 @@ $modelo_perfiles = new Perfil_modelo();
 
                     <!--CONTENIDO VISTA-->
                     <?php
-                    if (sizeof($nombres_categorias)!=0) {
+                    if (sizeof($nombres_categorias) != 0) {
                         foreach ($nombres_categorias as $nombre_categoria) {
                             $array_perfiles_populares = $modelo_perfiles->get_perfiles_categoria($nombre_categoria, 3);
-                            //pretty_print($array_perfiles_populares);
-                            include("../piezas/fila_categoria_populares.php");
+                            print_r("<div class=\"col-xs-12\">
+                                        <h2>$nombre_categoria</h2>
+                                    </div>");
+                            foreach ($array_perfiles_populares as $perfil) {
+                                include("../piezas/columna_perfil.php");
+                            }
                         }
                     }
                     ?>

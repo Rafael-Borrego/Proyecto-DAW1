@@ -21,6 +21,7 @@ class ScrapperInstagram
     public $numero_seguidos;
     public $cuenta_instagram;
     public $array_media;
+    public $limite_descargas = 10;
 
     /*---MÉTODOS---*/
     /*---Constructor de la clase*/
@@ -37,7 +38,7 @@ class ScrapperInstagram
             $this->numero_publicaciones = $this->cuenta_instagram->mediaCount;
             $this->numero_seguidores = $this->cuenta_instagram->followedByCount;
             $this->numero_seguidos = $this->cuenta_instagram->followsCount;
-            $this->array_media = Instagram::getMedias($this->nombre_usuario, 5/*$this->numero_publicaciones*/);
+            $this->array_media = Instagram::getMedias($this->nombre_usuario, $this->limite_descargas/*$this->numero_publicaciones*/);
         }
 
     }
@@ -126,8 +127,9 @@ class ScrapperInstagram
 
         print_r("<br/><br/>");
         $num_descargados = ($indice + 1) - $num_repetidos;
-        print_r("--- DESCARGADOS " . $num_descargados . " ARCHIVOS NUEVOS DE "
-            . $this->numero_publicaciones . " PUBLICACIONES ---");
+        print_r("--- LÍMITE DE DESCARGA = 10 ÚLTIMAS PUBLICACIONES.<br>
+                    --- DESCARGADOS " . $num_descargados . " ARCHIVOS NUEVOS DE "
+            . $this->numero_publicaciones . " PUBLICACIONES TOTALES ---");
         print_r("<br/><br/>");
 
         return $array_resultado;

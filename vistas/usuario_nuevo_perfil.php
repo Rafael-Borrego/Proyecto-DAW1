@@ -48,10 +48,12 @@ if (isset($_GET["submitted"]) && isset($_GET["expresion"]) && $_GET["expresion"]
     <!-- Bootstrap CSS-->
     <link href="../recursos/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS Propio -->
-    <link href="../recursos/css/usuario_nuevo_perfil.css" rel="stylesheet">
+    <link href="../recursos/css/usuario_populares.css" rel="stylesheet">
     <!--Searchbox-->
     <link rel="stylesheet" href="../recursos/css/awesomplete.css" />
     <script src="../recursos/js/awesomplete.js" async></script>
+    <script src="../recursos/sweetalert/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../recursos/sweetalert/css/sweetalert.css">
   </head>
   
   <body>
@@ -90,8 +92,11 @@ if (isset($_GET["submitted"]) && isset($_GET["expresion"]) && $_GET["expresion"]
                             <?php
                                 if ($hay_resultados)
                                 {
-                                    print_r(sizeof($perfiles_encontrados));
-                                    pretty_print($perfiles_encontrados);
+                                    //print_r(sizeof($perfiles_encontrados));
+                                    //pretty_print($perfiles_encontrados);
+                                    foreach ($perfiles_encontrados as $perfil){
+                                        include("../piezas/columna_perfil.php");
+                                    }
                                 }
                             ?>
       
@@ -108,6 +113,8 @@ if (isset($_GET["submitted"]) && isset($_GET["expresion"]) && $_GET["expresion"]
     <script src="../recursos/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <!--JS Propio (necesita jQuery)-->
     <script src="../recursos/js/admin_usuario.js"></script>
+      <!-- Script para ventana emergente-->
+      <script src="../recursos/js/dialogos_emergentes.js"></script>
   </body>
 
 </html>
