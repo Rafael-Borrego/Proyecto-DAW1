@@ -12,7 +12,7 @@
                     <p><label>Contraseña</label><input id="password" name="password" type="password" /></p>
                     <p><label>Repetir Contraseña</label><input id="password_confirm" name="password_confirm" type="password" /></p>
                     <p><label>Nombre Usuario</label><input id="nombre_usuario" name="nombre_usuario" type="text" /></p>
-                    <p><label></label><input id="submit" name="submit" type="submit" value="REGISTRO"/></p>
+                    <p><label></label><input id="submit" name="submit" type="submit" value="REGISTRO" style="color: black"/></p>
                     <!--<p><button class="boton2">Registrarse</button></p>-->
                 </form>
             </div>

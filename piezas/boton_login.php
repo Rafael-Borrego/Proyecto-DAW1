@@ -10,7 +10,7 @@
                     <input type='hidden' name='submitted_login' id='submitted_login' value='1'/>
                     <p><label>Email</label><input id="email_usuario" name="email_usuario" type="text" /></p>
                     <p><label>Contraseña</label><input id="password_usuario" name="password_usuario" type="password" /></p>
-                    <p><label></label><input id="submit" name="submit" type="submit" value="ENTRAR"/></p>
+                    <p><label></label><input id="submit" name="submit" type="submit" value="ENTRAR" style="color: black"/></p>
                     <!--<p><button type="submit" form="form_login"  name="submit" value="Entrar ">Entrar</button></p>-->
                 </form>
             </div>
