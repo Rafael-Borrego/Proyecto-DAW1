@@ -5,7 +5,14 @@
         <li><a href="usuario_populares.php">POPULARES</a></li>
         <li><a href="usuario_mis_perfiles.php">MIS PERFILES</a></li>
         <li><a href="usuario_nuevo_perfil.php">EXPLORAR</a></li>
-        <li><a href="usuario_configuracion.php">CONFIGURACIÓN</a></li>
+        <!--<li><a href="usuario_configuracion.php">CONFIGURACIÓN</a></li>-->
+        <?php if ($control_web->esta_usuario_logueado()) {
+            //Caso administrador
+            if ($_SESSION["usuario_logueado"]["tipo_usuario"] == "normal") {
+                echo("<li><a href='usuario_configuracion.php'>CONFIGURACIÓN</a></li>");
+                //Caso usuario normal
+            }
+        }?>
         <?php if ($control_web->esta_usuario_logueado()) {
             //Caso administrador
             if ($_SESSION["usuario_logueado"]["tipo_usuario"] == "administrador") {

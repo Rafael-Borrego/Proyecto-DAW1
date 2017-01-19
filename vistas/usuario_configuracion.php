@@ -15,8 +15,6 @@ $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
 /*Se recupera el usuario de sesión*/
 $modelo_usuarios = new Usuario_Modelo();
-$usuario_logueado = $modelo_usuarios->get_usuario_de_id($_SESSION["usuario_logueado"]["id_usuario"]);
-
 
 /*Caso en que haya que actualizar un perfil*/
 if (isset($_POST["submitted_actualizar"])) {
@@ -24,6 +22,8 @@ if (isset($_POST["submitted_actualizar"])) {
         $_POST["contrasena"], $_POST["tipo_usuario"],
         $_POST["nombre_usuario"], $_POST["nombre_completo"], $_POST["sexo"], $_POST["descripcion"]);
 }
+
+$usuario_logueado = $modelo_usuarios->get_usuario_de_id($_SESSION["usuario_logueado"]["id_usuario"]);
 
 
 $titulo_vista = "CONFIGURACIÓN USUARIO";
@@ -69,7 +69,7 @@ $titulo_vista = "CONFIGURACIÓN USUARIO";
                         <?php include("../piezas/icono_usuario_logout.php"); ?>
 
                         <!--FORMULARIO CONFIGURACIÓN USUARIO-->
-                        <?php include("../piezas/form_configuracion_usuario.php"); ?>
+                        <?php include("../piezas/formulario_usuario_configuracion.php"); ?>
 
                         <!--<div class="">-->
 
