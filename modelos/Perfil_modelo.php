@@ -114,7 +114,7 @@ class Perfil_modelo
     public function eliminar_perfil($id_perfil){
         $query = "DELETE FROM Perfil WHERE id_perfil='$id_perfil'";
 
-        $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo eliminar correctamente")*/;
+        $resultado = $this->conexion->query($query) or print_r($this->conexion->error . " No se pudo eliminar correctamente");
 
         if (!$resultado) {return false;}
         else {return true;}

@@ -13,6 +13,18 @@ if (!$control_web->esta_usuario_logueado())
 /*SE RECUPERA DE LA VARIABLE DE SESIÓN EL NOMBRE DEL USUARIO LOGUEADO*/
 $nombre_usuario_logueado = $_SESSION["usuario_logueado"]["nombre_usuario"];
 
+/*Se recupera el usuario de sesión*/
+$modelo_usuarios = new Usuario_Modelo();
+$usuario_logueado = $modelo_usuarios->get_usuario_de_id($_SESSION["usuario_logueado"]["id_usuario"]);
+
+
+/*Caso en que haya que actualizar un perfil*/
+if (isset($_POST["submitted_actualizar"])) {
+    $modelo_usuarios->actualizar_usuario($_POST["id_usuario"], $_POST["email"],
+        $_POST["contrasena"], $_POST["tipo_usuario"],
+        $_POST["nombre_usuario"], $_POST["nombre_completo"], $_POST["sexo"], $_POST["descripcion"]);
+}
+
 
 $titulo_vista = "CONFIGURACIÓN USUARIO";
 ?>
@@ -56,13 +68,8 @@ $titulo_vista = "CONFIGURACIÓN USUARIO";
                         <!--ICONO USUARIO-LOGOUT-->
                         <?php include("../piezas/icono_usuario_logout.php"); ?>
 
-                        <?php
-                            print_r("RESULTADO PETICIÓN POST => \n");
-                            print_r($_POST);
-                        ?>
-
                         <!--FORMULARIO CONFIGURACIÓN USUARIO-->
-                        <?php //include("../piezas/form_configuracion_usuario.php"); ?>
+                        <?php include("../piezas/form_configuracion_usuario.php"); ?>
 
                         <!--<div class="">-->
 

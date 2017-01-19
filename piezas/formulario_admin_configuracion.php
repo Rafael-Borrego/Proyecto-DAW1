@@ -1,4 +1,4 @@
-<form>
+<form action="admin_configuracion.php" method='post'>
     <div class="form-group">
         <label>Email</label>
         <input type="text" class="form-control" name="email" value="<?=$usuario_logueado["email"]?>">
@@ -34,5 +34,11 @@
         <textarea class="modal-descripcion form-control" rows="8"  name="descripcion"><?=$usuario_logueado["descripcion"]?></textarea>
     </div>
     <br>
+
+    <!--CAMPOS OCULTOS CON EL RESTO DE ATRIBUTOS DE PERFIL Y EL CONTROL DE SUBMIT-->
+    <input type="text" name="submitted_actualizar" value="1" hidden="true">
+    <input type="text" class="id_usuario" name="id_usuario" value="<?=$usuario_logueado["id_usuario"]?>" hidden="true">
+    <!--CAMPOS OCULTOS CON EL RESTO DE ATRIBUTOS DE PERFIL Y EL CONTROL DE SUBMIT-->
+
     <button type="submit" class="btn btn-primary">Modificar Datos</button>
 </form>

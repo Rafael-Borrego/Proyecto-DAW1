@@ -122,9 +122,9 @@ class Usuario_Modelo
     public function eliminar_usuario($id_usuario){
         $query = "DELETE FROM Usuario WHERE id_usuario='$id_usuario'";
 
-        $resultado = $this->conexion->query($query)/* or die ($this->conexion->error . " No se pudo eliminar correctamente")*/;
+        $resultado = $this->conexion->query($query) or print_r($this->conexion->error . " No se pudo eliminar correctamente");
 
-        if (!resultado) {return false;}
+        if (!$resultado) {return false;}
         else {return true;}
     }
 

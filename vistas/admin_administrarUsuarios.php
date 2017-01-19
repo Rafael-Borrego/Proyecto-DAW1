@@ -123,6 +123,8 @@ $array_usuarios = $modelo_usuarios->get_pag_usuarios($filas_por_pagina,$offset_q
                                 include("../piezas/fila_tabla_admin_usuarios.php");
                             }
                             ?>
+
+
                             </tbody>
                         </table>
                         <br>

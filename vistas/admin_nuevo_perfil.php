@@ -39,6 +39,37 @@ if (isset($_GET["insertar_perfil"]) && isset($_GET["nombre_perfil"]) && $_GET["n
     $insertar_perfil = true;
 }
 
+if ($realizar_busqueda)
+{
+    /*CONFIGURACIÓN DE LA PAGINACIÓN*/
+
+    /*CÁLCULO DE PARÁMETROS NECESARIOS PARA LA PAGINACIÓN*/
+    $num_filas_total = 100;
+    $filas_por_pagina = 10;
+    $num_paginas = ceil($num_filas_total / $filas_por_pagina);
+    $pagina_actual = min($num_paginas, filter_input(INPUT_GET, 'pagina', FILTER_VALIDATE_INT, array(
+        'options' => array(
+            'default' => 1,
+            'min_range' => 1,
+        ),
+    )));
+    $offset_query = (($pagina_actual - 1) * $filas_por_pagina);
+    $inicio = $offset_query + 1;
+    $final = min(($offset_query + $filas_por_pagina), $num_filas_total);
+
+    /*DECLARACIÓN DE LOS LINKS DEL PAGINADOR*/
+    $link_anterior = ($pagina_actual > 1) ? '<a href="?submitted=1&expresion=' . $_GET["expresion"] . '&pagina=1" title="Primera pagina">&laquo;</a> <a href="?submitted=1&expresion=' . $_GET["expresion"] . '&pagina='
+        . ($pagina_actual - 1) . '" title="Página anterior">&lsaquo;</a>' : '<span class="disabled">&laquo;
+                    </span> <span class="disabled">&lsaquo;</span>';
+    $link_siguiente = ($pagina_actual < $num_paginas) ? '<a href="?submitted=1&expresion=' . $_GET["expresion"] . '&pagina=' . ($pagina_actual + 1) .
+        '" title="Pagina siguiente">&rsaquo;</a> <a href="?submitted=1&expresion=' . $_GET["expresion"] . '&pagina=' . $num_paginas .
+        '" title="Última página">&raquo;</a>' : '<span class="disabled">&rsaquo;</span> 
+                        <span class="disabled">&raquo;</span>';
+
+    /*POBLACIÓN DE LA VISTA*/
+    $scrapper_Inst = new ScrapperInstagram();
+    $perfiles_encontrados = array_slice($scrapper_Inst->buscar_perfiles($_GET["expresion"]), $inicio, 10);
+}
 ?>
 
 
@@ -99,12 +130,12 @@ if (isset($_GET["insertar_perfil"]) && isset($_GET["nombre_perfil"]) && $_GET["n
 
                     <?php
                     if ($realizar_busqueda) {
-                        $scrapper_Inst = new ScrapperInstagram();
-                        $perfiles_encontrados = $scrapper_Inst->buscar_perfiles($_GET["expresion"]);
                         foreach ($perfiles_encontrados as $perfil) {
                             include("../piezas/columna_admin_nuevo_perfil.php");
                         }
-                        pretty_print($perfiles_encontrados[0]);
+                        echo '<br/><div class="col-xs-12" id="paginador"><p>', $link_anterior, ' Página ', $pagina_actual, ' de ',
+                        $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
+                        ' resultados ', $link_siguiente, ' </p></div>';
                     }
                     if ($insertar_perfil) {
                         $scrapper = new ScrapperInstagram($_GET["nombre_perfil"]);

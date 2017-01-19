@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `daw1_database`.`Usuario_Perfil` (
   CONSTRAINT `fk_Usuario_has_Perfil_Usuario`
     FOREIGN KEY (`id_usuario`)
     REFERENCES `daw1_database`.`Usuario` (`id_usuario`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Usuario_has_Perfil_Perfil1`
     FOREIGN KEY (`id_perfil`)

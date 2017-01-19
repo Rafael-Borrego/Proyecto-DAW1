@@ -135,6 +135,7 @@ if ($num_filas_total == 0) {
                         $num_paginas, ' páginas, mostrando ', $inicio, '-', $final, ' de ', $num_filas_total,
                         ' resultados ', $link_siguiente, ' </p></div>'; ?>
                     <?php } ?>
+
                 </div><!--columna principal-->
             </div><!--fila principal-->
         </div><!--container principal-->

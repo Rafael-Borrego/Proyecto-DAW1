@@ -11,17 +11,20 @@ if (!$control_web->esta_usuario_logueado()) {
     $control_web->redireccionar_a("../index.php");
 }
 
+
+
 /*Se recupera el usuario de sesión*/
-$modelo_usuarios = new Usuario_Modelo();
+$modelo_usuarios = new Usuario_Modelo();/*Caso en que haya que actualizar un perfil*/
+
+if (isset($_POST["submitted_actualizar"])) {
+    $modelo_usuarios->actualizar_usuario($_POST["id_usuario"], $_POST["email"],
+        $_POST["contrasena"], $_POST["tipo_usuario"],
+        $_POST["nombre_usuario"], $_POST["nombre_completo"], $_POST["sexo"], $_POST["descripcion"]);
+}
+
 $usuario_logueado = $modelo_usuarios->get_usuario_de_id($_SESSION["usuario_logueado"]["id_usuario"]);
 
-/*Caso en que haya que actualizar un perfil*/
-if (isset($_POST["submitted_actualizar"])) {
-    $modelo_perfiles->actualizar_perfil($_POST["id_perfil"], $_POST["nombre_perfil"],
-        $_POST["descripcion"], $_POST["url_imagen"],
-        $_POST["num_seguidores"], $_POST["num_publicaciones"],
-        $_POST["categoria"]);
-}
+
 
 $titulo_vista = "MI CONFIGURACIÓN";
 
@@ -72,7 +75,7 @@ $titulo_vista = "MI CONFIGURACIÓN";
 
 
                     <h1>Mi Configuración</h1>
-                    <?php include("../piezas/formulario_admin_configuracion.php") ?>
+                    <?php include("../piezas/formulario_admin_configuracion.php");?>
 
 
                 </div><!--COLUMNA PRINCIPAL BOOTSTRAP-->

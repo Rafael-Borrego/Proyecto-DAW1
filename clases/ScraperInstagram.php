@@ -1,4 +1,4 @@
-<?php
+º<?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/proyecto_daw1/vendor/autoload.php";
 use InstagramScraper\Instagram;
